@@ -39,7 +39,7 @@ router.post("/login", async (req, res) => {
             isAdmin: user.isAdmin,
           },
           process.env.JWT_KEY,
-          { expiresIn: "2d" }
+          { expiresIn: "60d" }
         );
         res.status(201).json({ ...others, accessToken });
       }
