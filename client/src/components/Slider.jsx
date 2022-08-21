@@ -8,9 +8,9 @@ import React, { useState } from "react";
 
 const Container = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     display: flex;
-    // background-color: #93B5C6;
+    background-color: #E4FBFF;
     position: relative;
     overflow: hidden;
 

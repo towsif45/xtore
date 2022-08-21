@@ -6,6 +6,7 @@ import logo from "../images/logo.png"
 
 const Container = styled.div`
     height: 60px;
+    background-color: #E4FBFF;
 `;
 
 const Wrapper = styled.div`
@@ -50,12 +51,14 @@ const Logo = styled.div`
     font-family: 'Expletus Sans', cursive;
     font-size: 35px;
     color: #256D85;
+    cursor: pointer;
 `;
 
 const Image = styled.img`
     height: 35px;
     width: 35px;
     margin-right: 3px;
+    cursor: pointer;
 `
 
 const Right = styled.div`
@@ -71,6 +74,7 @@ const MenuItem = styled.div`
     coursor: pointer;
     margin-left: 25px;
     color: #256D85;
+    cursor: pointer;
 `
 
 const Navbar = () => {
