@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
-    display_name:{
+    display_name: {
       type: String,
-      required: true
+      required: true,
     },
     username: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
     email: {
       type: String,
@@ -23,6 +23,9 @@ const UserSchema = new mongoose.Schema(
     isAdmin: {
       type: Boolean,
       default: false,
+    },
+    bank_account: {
+      type: String,
     },
   },
   {

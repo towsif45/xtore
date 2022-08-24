@@ -6,9 +6,14 @@ const BankAccountSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    password: {
+      type: String,
+      required: true,
+    },
     accountNo: {
       type: String,
       required: true,
+      unique: true,
     },
     balance: {
       type: Number,

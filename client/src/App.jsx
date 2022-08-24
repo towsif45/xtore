@@ -3,8 +3,8 @@ import Register from "./pages/Register";
 import LogIn from "./pages/LogIn";
 
 const App = () => {
-  return <LogIn/>;
 
+  return <Home />;
 };
 
 export default App;
