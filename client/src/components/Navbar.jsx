@@ -5,7 +5,7 @@ import { Badge } from '@material-ui/core';
 import logo from "../images/logo.png"
 
 const Container = styled.div`
-    height: 60px;
+    height: 70px;
     background-color: #E4FBFF;
 `;
 

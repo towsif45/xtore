@@ -49,8 +49,8 @@ const Image = styled.img`
 
 const ContainerInner = styled.div`
     flex: 1;
-    margin: 5px;
-    width: 280px;
+    margin: 20px 5px 0px;
+    max-width: 280px;
     height: 350px;
     display: flex;
     align-items: center;
@@ -111,9 +111,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>
@@ -127,9 +127,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>
@@ -143,9 +143,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>
@@ -159,9 +159,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>
@@ -175,9 +175,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>
