@@ -3,8 +3,9 @@ import { Facebook, Instagram, LocationOn, LocationOnOutlined, MailOutline, Phone
 
 const Container = styled.div`
     display: flex;
-    margin: 5px 50px;
+    margin: 20px 0px;
     background-color: #E4FBFF;
+    height: 250px;
     
 `
 const Left = styled.div`
