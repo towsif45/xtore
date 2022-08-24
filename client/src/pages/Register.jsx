@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import logo from "../images/logo.png"
 
 const Container = styled.div`
   width: 100vw;
@@ -10,7 +9,6 @@ const Container = styled.div`
   justify-content: center;
 
 `
-
 const Wrapper = styled.div`
   width: 40%;
   // height: 40%;
@@ -18,24 +16,8 @@ const Wrapper = styled.div`
   background-color: #E4FBFF;
 
 `
-
-const Logo = styled.div`
-  font-family:'Expletus Sans', cursive;
-  text-align: center;
-  color: #256D85;
-  font-size: 30px;
-  margin-bottom: 20px;
-`
-
-const Image = styled.img`
-  height: 35px;
-  width: 35px;
-  margin-right: 3px;
-  cursor: pointer;
-`
-
 const Title = styled.div`
-  font-size: 20px;
+  font-size: 24px;
   color: #256D85;
   font-weight: 300;
   // font-family: 'Expletus Sans', cursive;
@@ -72,12 +54,7 @@ const Button = styled.button`
 const Register = () => {
   return (
     <Container>
-      
       <Wrapper>
-        <Logo>
-          <Image src = {logo} />
-          tore
-        </Logo>
         <Title>Create An Account</Title>
         <Form>
           <Input placeholder = "Name"></Input>

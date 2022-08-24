@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import logo from "../images/logo.png"
 
 const Container = styled.div`
   width: 100vw;
@@ -15,28 +14,10 @@ const Wrapper = styled.div`
   // height: 40%;
   padding: 20px;
   background-color: #E4FBFF;
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
 
 `
-const Logo = styled.div`
-  font-family:'Expletus Sans', cursive;
-  // text-align: center;
-  color: #256D85;
-  font-size: 30px;
-  margin-bottom: 20px;
-`
-
-const Image = styled.img`
-  height: 35px;
-  width: 35px;
-  margin-right: 3px;
-  cursor: pointer;
-`
-
 const Title = styled.div`
-  font-size: 20px;
+  font-size: 24px;
   color: #256D85;
   font-weight: 300;
 `
@@ -78,10 +59,6 @@ const LogIn = () => {
   return (
     <Container>
       <Wrapper>
-        <Logo>
-          <Image src = {logo} />
-          tore
-        </Logo>
         <Title>Sign In</Title>
         <Form>
           <Input placeholder = "E-mail"></Input>
