@@ -154,6 +154,7 @@ const Cart = () => {
                 <TopButton>
                     CONTINUE SHOPPING
                 </TopButton>
+                
                 {/* <TopTexts>
                     <TopText>
                         Your Shopping Bag
