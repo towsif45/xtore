@@ -3,9 +3,9 @@ import { Facebook, Instagram, LocationOn, LocationOnOutlined, MailOutline, Phone
 
 const Container = styled.div`
     display: flex;
-    margin: 5px 50px;
+    margin: 5px 0px;
     background-color: #E4FBFF;
-    
+    height: 250px;
 `
 const Left = styled.div`
     flex: 1;
@@ -20,7 +20,7 @@ const Center = styled.div`
     align-items: center;
 `
 const Title = styled.div`
-    font-weight: bold;
+    // font-weight: bold;
     color: #256D85;
 `
 const ContactItem = styled.div`
@@ -29,7 +29,7 @@ const ContactItem = styled.div`
     // align-items: center;
     justify-content: center;
     color: #256D85;
-    font-size: 14px;
+    font-size: 13px;
 `
 const TextContainer = styled.div`
 
