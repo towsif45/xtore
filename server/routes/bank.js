@@ -5,7 +5,7 @@ const router = require("express").Router();
 
 // Create account
 router.post("/", async (req, res) => {
-  const hashed_pass = bcrypt.hash(req.body.password, 10);
+  const hashed_pass = await bcrypt.hash(req.body.password, 10);
   const newAccount = new BankAccount({
     userId: req.body.userId,
     accountNo: req.body.accountNo,
