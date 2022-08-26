@@ -1,6 +1,5 @@
 import {
   FavoriteBorderOutlined,
-  SearchOutlined,
   ShoppingCartOutlined,
 } from "@material-ui/icons";
 import { useEffect, useState } from "react";
@@ -96,7 +95,7 @@ const Icon = styled.div`
   &:hover ${Image} {
     z-index: 3;
   }
-
+`
 const Product = () => {
   const [products, setProducts] = useState([]);
 
