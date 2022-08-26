@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { AccountCircle, Search, ShoppingCartOutlined } from "@material-ui/icons"
 import { Badge } from '@material-ui/core';
 import logo from "../images/logo.png"
+import { useSelector } from "react-redux";
 import {mobile} from "../responsive"
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     height: 65px;
@@ -84,39 +86,40 @@ const MenuItem = styled.div`
 `
 
 const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
+  console.log(quantity);
   return (
     <Container>
-        <Wrapper>
-            <Left>
-                <SearchContainer>
-                    <Input placeholder = "search"/>
-                    <Search style={{color:"#256D85", fontSize:16}}/>
-                </SearchContainer>
-            </Left>
-            <Center>
-                <Logo>
-                    <Image src = {logo} />
-                    {/* <LogoText>tore</LogoText> */}
-                </Logo>
-                <Logo>
-                    tore
-                </Logo>
-            </Center>
-            <Right>
-                <MenuItem>Register</MenuItem>
-                <MenuItem>Sign In</MenuItem>
-                <MenuItem>
-                    <Badge badgeContent={4} color="#256D85">
-                    <ShoppingCartOutlined/>
-                    </Badge>
-                </MenuItem>
-                <MenuItem>
-                    <AccountCircle/>
-                </MenuItem>
-            </Right>
-        </Wrapper>
+      <Wrapper>
+        <Left>
+          <SearchContainer>
+            <Input placeholder = "search"/>
+            <Search style={{ color: "#256D85", fontSize: 16 }} />
+          </SearchContainer>
+        </Left>
+        <Center>
+          <Logo>
+            <Image src={logo} />
+            tore
+          </Logo>
+          <Logo>
+            tore
+          </Logo>
+        </Center>
+        <Right>
+          <MenuItem>Register</MenuItem>
+          <MenuItem>Sign In</MenuItem>
+          <Link to="/cart">
+            <MenuItem>
+              <Badge badgeContent={quantity} color="#256D85">
+                <ShoppingCartOutlined />
+              </Badge>
+            </MenuItem>
+          </Link>
+        </Right>
+      </Wrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

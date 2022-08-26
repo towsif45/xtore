@@ -139,6 +139,7 @@ const ContainerInner = styled.div`
     transform: scale(1.1);
     transition: all 0.5s ease;
   }
+
 `
 const Product = () => {
   const [products, setProducts] = useState([]);
