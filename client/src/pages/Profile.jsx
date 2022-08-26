@@ -57,6 +57,13 @@ const HistoryTitle = styled.div`
     margin-left: 5px;
     cursor: pointer;
 `
+const Hr = styled.hr`
+    background-color: #eee;
+    border: none;
+    height: 2px;
+    width: 60%;
+    margin-left: 150px;
+`
 
 const Profile = () => {
   return (
@@ -72,6 +79,7 @@ const Profile = () => {
                         Farina Tahsin Chowdhury
                     </Info>
                 </FullInfo>
+                <Hr style={{align:"center"}}/>
                 <FullInfo>
                     <TitleInfo>
                         Username:
@@ -80,6 +88,7 @@ const Profile = () => {
                         Farina1103
                     </Info>
                 </FullInfo>
+                <Hr style={{align:"center"}}/>
                 <FullInfo>
                     <TitleInfo>
                         E-mail:
@@ -88,6 +97,7 @@ const Profile = () => {
                         abcde@gmail.com
                     </Info>
                 </FullInfo>
+                <Hr style={{align:"center"}}/>
                 <FullInfo>
                     <TitleInfo>
                         Bank Account Number:
@@ -96,6 +106,7 @@ const Profile = () => {
                         0123456789
                     </Info>
                 </FullInfo>
+                <Hr style={{align:"center"}}/>
                 <FullInfo>
                     <TitleInfo>
                         Bank Account Balance:

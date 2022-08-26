@@ -31,7 +31,7 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-weight: 250;
+  font-weight: 300;
   color: #256d85;
   // color: teal;
 `;
@@ -155,11 +155,12 @@ const SingleProduct = () => {
           <Title> {product.title} </Title>
           <Desc>{product.description}</Desc>
           <Price>{"$ " + product.price}</Price>
+
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((c) => (
-                <FilterColor color={c} onClick={()=> setColor(c)} />
+                <FilterColor color={c} onClick={() => setColor(c)} />
               ))}
             </Filter>
           </FilterContainer>
@@ -167,12 +168,12 @@ const SingleProduct = () => {
             <AmountContainer>
               <Remove
                 onClick={() => handleQuantity("dec")}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", color: "#444444" }}
               />
               <Amount>{quantity}</Amount>
               <Add
                 onClick={() => handleQuantity("inc")}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", color: "#444444" }}
               />
             </AmountContainer>
           </AddContainer>
