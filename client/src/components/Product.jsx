@@ -1,6 +1,5 @@
 import {
   FavoriteBorderOutlined,
-  SearchOutlined,
   ShoppingCartOutlined,
 } from "@material-ui/icons";
 import { useEffect, useState } from "react";
@@ -138,6 +137,7 @@ const ContainerInner = styled.div`
     transform: scale(1.1);
     transition: all 0.5s ease;
   }
+
 `
 const Product = () => {
   const [products, setProducts] = useState([]);
