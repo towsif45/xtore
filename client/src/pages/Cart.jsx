@@ -37,15 +37,15 @@ const TopButton = styled.button`
     color: ${(props) => props.type === "filled" && "white"};
 `
 
-const TopTexts = styled.div`
+// const TopTexts = styled.div`
 
-`
-const TopText = styled.span`
-    text-decoration: underline;
-    cursor: pointer;
-    margin: 0px 10px;
+// `
+// const TopText = styled.span`
+//     text-decoration: underline;
+//     cursor: pointer;
+//     margin: 0px 10px;
 
-`
+// `
 const Bottom = styled.div`
     display: flex;
     jystify-content: space-between;
