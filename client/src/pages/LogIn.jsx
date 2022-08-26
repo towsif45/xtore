@@ -4,36 +4,35 @@ import logo from "../images/logo.png"
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  // background-color: #93B5C6;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   background-color: #E4FBFF;
 
 `
+const LogoContainer = styled.div`
+  flex: 1;
+  align-items: center;
+  display: flex;
+  align-items: center;
+`
 const Logo = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 150px 0px 0px 390px;
-  // margin-top: 150px;
   font-family: 'Expletus Sans', cursive;
   font-size: 30px;
   color: #256D85;
+  margin-bottom: 20px;
 `
 const Image = styled.img`
   height: 35px;
   width: 35px;
   margin-right: 5px;
+  margin-top: 5px;
 `
 
 const Wrapper = styled.div`
   width: 40%;
-  // height: 40%;
   padding: 20px;
   background-color: #E4FBFF;
-  // text-align: center;
 
 `
 const Title = styled.div`
@@ -45,11 +44,9 @@ const Title = styled.div`
 const Form = styled.form`
    display: flex;
    flex-direction: column;
-   flex-wrap: wrap;
-  //  align-items: center;
+
 `
 const Input = styled.input`
-  // flex: 1;
   width: 65%;
   margin: 20px 10px 0px 0px;
   padding: 10px;
@@ -63,11 +60,15 @@ const Button = styled.button`
   margin-top: 30px;
   padding: 15px 10px;
   color: white;
-  // font-weight: 600;
   background-color: #444444;
   cursor: pointer;
-  // margin-top: 15px;
   font-size: 15px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #256D85;
+    transform: scale(1.02);
+  }
 `
 const TextContainer = styled.div`
   color: #256D85;
@@ -81,11 +82,20 @@ const Link = styled.a`
 const LogIn = () => {
   return (
     <Container>
-      <Logo>
-        <Image src = {logo}/>
-        tore
-      </Logo>
+      
       <Wrapper>
+        <LogoContainer>
+          <Logo>
+            <Image src = {logo}/>
+          </Logo>
+          <Logo>
+            tore
+          </Logo>
+        </LogoContainer>
+        {/* <Logo>
+          <Image src = {logo}/>
+          tore
+        </Logo> */}
         <Title>Sign In</Title>
         <Form>
           <Input placeholder = "E-mail"></Input>

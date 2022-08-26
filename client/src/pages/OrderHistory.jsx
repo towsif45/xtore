@@ -15,7 +15,7 @@ const OrderHistory = () => {
     <Container>
         <Navbar/>
         <Box sx = {{margin: 50}}>
-            <SimpleCard sx = {{width: "100%"}}/>
+            <SimpleCard />
         </Box>
         <Box sx = {{margin: 50}}>
             <SimpleCard/>

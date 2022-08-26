@@ -3,6 +3,7 @@ import { Add, Remove } from "@material-ui/icons";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import headphone from "../images/headphonerbg.png"
+import { mobile } from "../responsive";
 
 const Container = styled.div`
 
@@ -10,6 +11,7 @@ const Container = styled.div`
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  ${mobile({flexDirection:"column", padding:"10px", alignItems:"center"})}
 `;
 
 const ImgContainer = styled.div`
@@ -20,6 +22,7 @@ const Image = styled.img`
   width: 400px;
   height: 400px;
 //   object-fit: cover;
+  ${mobile({height:"50vh", width:"50vh"})}
 `;
 
 const InfoContainer = styled.div`

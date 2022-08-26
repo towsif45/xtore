@@ -4,6 +4,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons"
 import banner2 from "../images/banner2.png"
 import black_banner from "../images/black_banner.jpg"
 import React, { useState } from "react";
+import { mobile } from '../responsive';
 // import { sliderItems } from '../data';
 
 const Container = styled.div`
@@ -13,6 +14,7 @@ const Container = styled.div`
     background-color: #E4FBFF;
     position: relative;
     overflow: hidden;
+    ${mobile({display:"none"})}
 
 `
 const Arrow = styled.div`
@@ -34,6 +36,7 @@ const Arrow = styled.div`
     z-index: 2;
 
     &:hover {
+        transition: all 0.3s ease;
         transform: scale(1.1);
         // opacity: 30%;
     }

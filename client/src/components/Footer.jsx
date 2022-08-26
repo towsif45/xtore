@@ -6,16 +6,11 @@ const Container = styled.div`
     margin: 20px 0px;
     background-color: #E4FBFF;
     height: 250px;
-    // position: absolute;
-    // bottom: 0;
     margin-bottom: 0px;
+    justify-content: center;
 `
-const Left = styled.div`
-    flex: 1;
-    // background-color: black;
-`
+
 const Center = styled.div`
-    flex: 1;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -23,7 +18,6 @@ const Center = styled.div`
     align-items: center;
 `
 const Title = styled.div`
-    // font-weight: bold;
     color: #256D85;
 `
 const ContactItem = styled.div`
@@ -55,17 +49,9 @@ const SocialIcon = styled.div`
     margin-right: 10px;
     cursor: pointer;
 `
-const Right = styled.div`
-    flex: 1;
-    // background-color: black;
-`
-
 const footer = () => {
   return (
     <Container>
-        <Left>
-
-        </Left>
         <Center>
         <Title>CONTACT US</Title><br/>
         <ContactItem marginBottom = "3px"><LocationOn style={{marginRight:"5px", height:"20px", width:"20px"}}/>
@@ -89,9 +75,6 @@ const footer = () => {
             </SocialIcon>
         </SocialContainers>
         </Center>
-        <Right>
-
-        </Right>
     </Container>
   )
 }
