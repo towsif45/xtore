@@ -1,13 +1,29 @@
 import styled from "styled-components"
+import logo from "../images/logo.png"
 
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background-color: #93B5C6;
+  background-color: #E4FBFF;
   display: flex;
   align-items: center;
   justify-content: center;
 
+`
+const Logo = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 120px 0px 0px 390px;
+  // margin-top: 150px;
+  font-family: 'Expletus Sans', cursive;
+  font-size: 30px;
+  color: #256D85;
+`
+const Image = styled.img`
+  height: 35px;
+  width: 35px;
+  margin-right: 5px;
 `
 const Wrapper = styled.div`
   width: 40%;
@@ -33,11 +49,12 @@ const Input = styled.input`
   // height: 25px;
   margin: 20px 10px 0px 0px;
   padding: 10px;
+  border: .1px solid lightgray;
   
 `
 const Agreement = styled.span`
   font-size: 12px;
-  margin: 20px 10px;
+  margin: 20px 0px;
   color: #256D85;
   cursor: pointer;
 `
@@ -54,6 +71,10 @@ const Button = styled.button`
 const Register = () => {
   return (
     <Container>
+      <Logo>
+        <Image src = {logo}/>
+        tore
+      </Logo>
       <Wrapper>
         <Title>Create An Account</Title>
         <Form>

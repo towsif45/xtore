@@ -6,10 +6,12 @@ import { Add, Remove } from '@material-ui/icons';
 
 const Container = styled.div`
     // background-color: #E8F9FD;
+    // position: relative;
 `
 
 const Wrapper = styled.div`
     padding: 20px;
+
 `
 
 const Title = styled.div`

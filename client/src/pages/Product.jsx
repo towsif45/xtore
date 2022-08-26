@@ -28,7 +28,7 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-weight: 250;
+  font-weight: 300;
   color: #256D85;
     // color: teal;
 `;
@@ -119,7 +119,7 @@ const Product = () => {
           <Image src= {headphone}/>
         </ImgContainer>
         <InfoContainer>
-          <Title>Denim Jumpsuit</Title>
+          <Title>Black Headphone</Title>
           <Desc>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
             venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
@@ -138,9 +138,9 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove style = {{cursor:"pointer"}}/>
+              <Remove style = {{cursor:"pointer", color:'#444444'}}/>
               <Amount>1</Amount>
-              <Add style = {{cursor:"pointer"}}/>
+              <Add style = {{cursor:"pointer", color:'#444444'}}/>
             </AmountContainer>
           </AddContainer>
           <Button>ADD TO CART</Button>

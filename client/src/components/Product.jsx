@@ -51,56 +51,51 @@ const Image = styled.img`
 `;
 
 const ContainerInner = styled.div`
-  flex: 1;
-  margin: 5px;
-  width: 280px;
-  height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e4fbff;
-  position: relative;
+    flex: 1;
+    margin: 20px 0px 0px;
+    max-width: 280px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E4FBFF;
+    position: relative;
 
-  &:hover {
-    transform: scale(1.04);
+
+    &:hover{
+        transform: scale(1.04);
+        transition: all 0.5s ease;
+    }
+
+    &:hover ${Image}{
+        z-index: 3;
+    }
+
+    &:hover ${Circle}{
+        z-index: 2;
+    }
+
+    // &:hover ${Info}{
+    //     opacity: 1;
+    // }
+`
+
+const Icon = styled.div`
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    margin: 5px;
     transition: all 0.5s ease;
   }
 
   &:hover ${Image} {
     z-index: 3;
   }
-
-  &:hover ${Circle} {
-    z-index: 2;
-  }
-
-  // &:hover ${Info}{
-  //     opacity: 1;
-  // }
-`;
-
-const Icon = styled.div`
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: black;
-  margin: 5px;
-  transition: all 0.5s ease;
-  margin-top: 275px;
-  // background-color: #333333;
-  // color: white;
-
-  &:hover {
-    background-color: #333333;
-    color: white;
-    transform: scale(1.1);
-    // background-color: black;
-  }
-`;
 
 const Product = () => {
   const [products, setProducts] = useState([]);
@@ -127,113 +122,16 @@ const Product = () => {
               <ShoppingCartOutlined />
             </Icon>
             <Icon>
-              <SearchOutlined />
-            </Icon>
-            <Icon>
               <FavoriteBorderOutlined />
             </Icon>
           </Info>
         </ContainerInner>
       ))}
 
-      {/*<ContainerInner>
-        <Circle />
-        <Image src={headphone} />
-        <Info>
-          <Icon>
-            <ShoppingCartOutlined />
-          </Icon>
-          <Icon>
-            <SearchOutlined />
-          </Icon>
-          <Icon>
-            <FavoriteBorderOutlined />
-          </Icon>
-        </Info>
-      </ContainerInner>
-
-      <ContainerInner>
-        <Circle />
-        <Image src={headphone} />
-        <Info>
-          <Icon>
-            <ShoppingCartOutlined />
-          </Icon>
-          <Icon>
-            <SearchOutlined />
-          </Icon>
-          <Icon>
-            <FavoriteBorderOutlined />
-          </Icon>
-        </Info>
-      </ContainerInner>
-
-      <ContainerInner>
-        <Circle />
-        <Image src={headphone} />
-        <Info>
-          <Icon>
-            <ShoppingCartOutlined />
-          </Icon>
-          <Icon>
-            <SearchOutlined />
-          </Icon>
-          <Icon>
-            <FavoriteBorderOutlined />
-          </Icon>
-        </Info>
-      </ContainerInner> */}
+      
     </ContainerOuter>
 
-    //     <Image src = {headphone}/>
-    //     <Info>
-    //         <Icon>
-    //             <ShoppingCartOutlined/>
-    //         </Icon>
-    //         <Icon>
-    //             <SearchOutlined/>
-    //         </Icon>
-    //         <Icon>
-    //             <FavoriteBorderOutlined/>
-    //         </Icon>
-    //     </Info>
-    //     <Image src = {headphone}/>
-    //     <Info>
-    //         <Icon>
-    //             <ShoppingCartOutlined/>
-    //         </Icon>
-    //         <Icon>
-    //             <SearchOutlined/>
-    //         </Icon>
-    //         <Icon>
-    //             <FavoriteBorderOutlined/>
-    //         </Icon>
-    //     </Info>
-    //     <Image src = {headphone}/>
-    //     <Info>
-    //         <Icon>
-    //             <ShoppingCartOutlined/>
-    //         </Icon>
-    //         <Icon>
-    //             <SearchOutlined/>
-    //         </Icon>
-    //         <Icon>
-    //             <FavoriteBorderOutlined/>
-    //         </Icon>
-    //     </Info>
-    //     <Image src = {headphone}/>
-    //     <Info>
-    //         <Icon>
-    //             <ShoppingCartOutlined/>
-    //         </Icon>
-    //         <Icon>
-    //             <SearchOutlined/>
-    //         </Icon>
-    //         <Icon>
-    //             <FavoriteBorderOutlined/>
-    //         </Icon>
-    //     </Info>
-    // </Container>
+    
   );
 };
 
