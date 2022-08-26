@@ -25,6 +25,8 @@ router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
 
+    
+
     if (!user) {
       res.status(400).json("Wrong credentials!");
     } else {
@@ -33,15 +35,18 @@ router.post("/login", async (req, res) => {
         res.status(420).json("Wrong credentials!");
       } else {
         const { password, ...others } = user._doc;
+        
+        
         const accessToken = jwt.sign(
           {
             id: user._id,
             isAdmin: user.isAdmin,
           },
-          process.env.JWT_KEY,
+          "youknowhowflamescanhypnotize",
           { expiresIn: "60d" }
         );
-        res.status(201).json({ ...others, accessToken });
+        console.log(accessToken);
+        res.status(201).json({ others, accessToken });
       }
     }
   } catch (err) {
