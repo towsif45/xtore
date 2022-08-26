@@ -184,11 +184,11 @@ const Cart = () => {
                         </ProductDetail>
                         <PriceDetail>
                             <ProductAmountContainer>
-                                <Add/>
+                                <Add style = {{cursor:"pointer", color:'#444444'}}/>
                                 <ProductAmount>
                                     3
                                 </ProductAmount>
-                                <Remove/>
+                                <Remove style = {{cursor:"pointer", color:'#444444'}}/>
                             </ProductAmountContainer>
                             <ProductPrice>
                                 $ 30
