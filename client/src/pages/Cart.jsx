@@ -5,7 +5,7 @@ import headphone from "../images/headphonerbg.png"
 import { Add, Remove } from '@material-ui/icons';
 
 const Container = styled.div`
-    background-color: ;
+    // background-color: #E8F9FD;
 `
 
 const Wrapper = styled.div`
