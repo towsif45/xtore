@@ -7,7 +7,7 @@ import Profile from "./pages/Profile";
 import OrderHistory from "./pages/OrderHistory";
 
 const App = () => {
-  return <OrderHistory />;
+  return <Profile />;
 };
 
 export default App;

@@ -49,14 +49,15 @@ const Image = styled.img`
 
 const ContainerInner = styled.div`
     flex: 1;
-    margin: 5px;
-    width: 280px;
+    margin: 20px 0px 0px;
+    max-width: 280px;
     height: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #E4FBFF;
     position: relative;
+
 
     &:hover{
         transform: scale(1.04);
@@ -111,9 +112,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>
@@ -127,9 +128,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>
@@ -143,9 +144,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>
@@ -159,9 +160,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>
@@ -175,9 +176,9 @@ const Product = () => {
                 <Icon>
                     <ShoppingCartOutlined/>
                 </Icon>
-                <Icon>
+                {/* <Icon>
                     <SearchOutlined/>
-                </Icon>
+                </Icon> */}
                 <Icon>
                     <FavoriteBorderOutlined/>
                 </Icon>

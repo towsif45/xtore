@@ -3,9 +3,12 @@ import { Facebook, Instagram, LocationOn, LocationOnOutlined, MailOutline, Phone
 
 const Container = styled.div`
     display: flex;
-    margin: 5px 0px;
+    margin: 20px 0px;
     background-color: #E4FBFF;
     height: 250px;
+    // position: absolute;
+    // bottom: 0;
+    margin-bottom: 0px;
 `
 const Left = styled.div`
     flex: 1;
