@@ -2,17 +2,22 @@ import styled from "styled-components";
 import { Add, Remove } from "@material-ui/icons";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import headphone from "../images/headphonerbg.png";
+import headphone from "../images/headphonerbg.png"
+import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { publicRequest } from "../requestMethods";
-import { addProduct } from "../redux/cartRedux";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import {publicRequest} from "../requestMethods"
+import {addProduct} from "../redux/cartRedux"
 
-const Container = styled.div``;
+const Container = styled.div`
+
+`
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  ${mobile({flexDirection:"column", padding:"10px", alignItems:"center"})}
 `;
 
 const ImgContainer = styled.div`
@@ -22,7 +27,8 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   width: 400px;
   height: 400px;
-  //   object-fit: cover;
+//   object-fit: cover;
+  ${mobile({height:"50vh", width:"50vh"})}
 `;
 
 const InfoContainer = styled.div`

@@ -10,20 +10,23 @@ const Container = styled.div`
   justify-content: center;
 
 `
+const LogoContainer = styled.div`
+  flex: 1;
+  align-items: center;
+  display: flex;
+  align-items: center;
+`
 const Logo = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 120px 0px 0px 390px;
-  // margin-top: 150px;
   font-family: 'Expletus Sans', cursive;
-  font-size: 30px;
+  font-size: 35px;
   color: #256D85;
+  margin-bottom: 20px;
 `
 const Image = styled.img`
   height: 35px;
   width: 35px;
   margin-right: 5px;
+  margin-top: 5px;
 `
 const Wrapper = styled.div`
   width: 40%;
@@ -66,16 +69,26 @@ const Button = styled.button`
   font-weight: 600;
   background-color: #444444;
   cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #256D85;
+    transform: scale(1.02);
+  }
 `
 
 const Register = () => {
   return (
     <Container>
-      <Logo>
-        <Image src = {logo}/>
-        tore
-      </Logo>
       <Wrapper>
+        <LogoContainer>
+        <Logo>
+          <Image src = {logo}/>
+        </Logo>
+        <Logo>
+          tore
+        </Logo>
+        </LogoContainer>
         <Title>Create An Account</Title>
         <Form>
           <Input placeholder = "Name"></Input>

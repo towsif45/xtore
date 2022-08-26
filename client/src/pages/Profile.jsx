@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer"
 import { History } from "@material-ui/icons";
+import { mobile } from "../responsive";
 
 const Container = styled.div`
     // align-items: center;
@@ -12,6 +13,7 @@ const ProfileContainer = styled.div`
     align-items: center;
     position: relative;
     height: 350px;
+    ${mobile({display:"flex",flexDirection:"column"})}
 `
 
 const InfoContainer = styled.div`
@@ -20,12 +22,15 @@ const InfoContainer = styled.div`
     justify-content: center;
     flex-direction: column;
     height: 100%;
+    ${mobile({alignItems:"center"})}
+    
 `
 const FullInfo = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 15px 200px;   
+    margin: 15px 200px;
+    ${mobile({flexDirection:"column", margin:"10px"})}
 `
 
 const TitleInfo = styled.div`
@@ -63,6 +68,7 @@ const Hr = styled.hr`
     height: 2px;
     width: 60%;
     margin-left: 150px;
+
 `
 
 const Profile = () => {

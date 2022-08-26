@@ -8,6 +8,7 @@ import headphone from "../images/headphonerbg.png";
 import watch from "../images/smartwatch.png";
 import phone from "../images/phone.png";
 import axios from "axios";
+import { mobile } from "../responsive";
 
 const ContainerOuter = styled.div`
   padding: 0px 50px;
@@ -52,6 +53,7 @@ const CircleShape = styled.div`
 const Image = styled.img`
   height: 75%;
   z-index: 3;
+  // ${mobile({height:"30vh"})}
 `;
 
 const Info = styled.div`

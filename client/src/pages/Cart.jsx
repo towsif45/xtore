@@ -3,19 +3,19 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import headphone from "../images/headphonerbg.png"
 import { Add, Remove } from '@material-ui/icons';
+import { mobile } from '../responsive';
 
 const Container = styled.div`
-    // background-color: #E8F9FD;
-    // position: relative;
+
 `
 
 const Wrapper = styled.div`
     padding: 20px;
+    ${mobile({padding:"10px"})}
 
 `
 
 const Title = styled.div`
-    // font-family: 'Expletus Sans', cursive;
     font-weight: 300;
     text-align: center;
     font-size: 26px;
@@ -28,6 +28,7 @@ const Top = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 20px;
+    ${mobile({flexDirection:"column"})}
 `
 
 const TopButton = styled.button`
@@ -37,20 +38,17 @@ const TopButton = styled.button`
     border: ${(props) => props.type === "filled" && "none"};
     background-color: ${(props) => props.type === "filled" ? "#256D85" : "transparent"};
     color: ${(props) => props.type === "filled" && "white"};
+    transition: all 0.3s ease;
+    &:hover {
+        transform: scale(1.02);
+        background-color: #E8F9FD;
+    }
 `
 
-// const TopTexts = styled.div`
-
-// `
-// const TopText = styled.span`
-//     text-decoration: underline;
-//     cursor: pointer;
-//     margin: 0px 10px;
-
-// `
 const Bottom = styled.div`
     display: flex;
     jystify-content: space-between;
+    ${mobile({flexDirection:"column"})}
 `
 const Info = styled.div`
     flex: 3;
@@ -118,7 +116,7 @@ const Summary = styled.div`
     border: 0.5px solid lightgray;
     border-radius: 10px;
     padding: 20px;
-    height: 50vh;
+    height: 350px;
 `
 
 const SummaryTitle = styled.div`
@@ -144,6 +142,12 @@ const Button = styled.button`
     color: white;
     font-weight: 600;
     border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+        transform: scale(1.02);
+
+    }
 `
 
 const Cart = () => {
@@ -156,19 +160,9 @@ const Cart = () => {
                 <TopButton>
                     CONTINUE SHOPPING
                 </TopButton>
-                
-                {/* <TopTexts>
-                    <TopText>
-                        Your Shopping Bag
-                    </TopText>
-                    <TopText>
-                        Your Wishlist
-                    </TopText>
-                </TopTexts> */}
-                
-                <TopButton type="filled">
+                {/* <TopButton type="filled">
                     CHECKOUT NOW
-                </TopButton>
+                </TopButton> */}
             </Top>
             <Bottom>
 
