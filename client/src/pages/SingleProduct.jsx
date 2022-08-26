@@ -1,12 +1,15 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { Add, Remove } from "@material-ui/icons";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import headphone from "../images/headphonerbg.png"
+import headphone from "../images/headphonerbg.png";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../requestMethods";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
-const Container = styled.div`
-
-`
+const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
@@ -19,7 +22,7 @@ const ImgContainer = styled.div`
 const Image = styled.img`
   width: 400px;
   height: 400px;
-//   object-fit: cover;
+  //   object-fit: cover;
 `;
 
 const InfoContainer = styled.div`
@@ -29,8 +32,8 @@ const InfoContainer = styled.div`
 
 const Title = styled.h1`
   font-weight: 250;
-  color: #256D85;
-    // color: teal;
+  color: #256d85;
+  // color: teal;
 `;
 
 const Desc = styled.p`
@@ -87,7 +90,7 @@ const Amount = styled.span`
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  border: 1px solid #256D85;
+  border: 1px solid #256d85;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,58 +100,88 @@ const Amount = styled.span`
 const Button = styled.button`
   padding: 15px;
   margin: 20px 0px;
-  border: 1px solid #256D85;
-  color: #256D85;
+  border: 1px solid #256d85;
+  color: #256d85;
   background-color: white;
   cursor: pointer;
   font-weight: 550;
-  &:hover{
+  &:hover {
     //   background-color: #f8f4f4;
-    background-color: #256D85;
+    background-color: #256d85;
     color: white;
     font-weight: 600;
   }
 `;
 
-const Product = () => {
+const SingleProduct = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest("/products/find/" + id);
+        setProduct(res.data);
+        console.log(res.data);
+      } catch (err) {}
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+  const handleClick = () => {
+    // update cart
+    dispatch(addProduct({ ...product, quantity, color }));
+  };
+
   return (
     <Container>
       <Navbar />
       <Wrapper>
         <ImgContainer>
-          <Image src= {headphone}/>
+          <Image src={headphone} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Denim Jumpsuit</Title>
-          <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-            tristique tortor pretium ut. Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
-          </Desc>
-          <Price>$ 20</Price>
+          <Title> {product.title} </Title>
+          <Desc>{product.description}</Desc>
+          <Price>{"$ " + product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="#607EAA" />
-              <FilterColor color="gray" />
+              {product.color?.map((c) => (
+                <FilterColor color={c} onClick={()=> setColor(c)} />
+              ))}
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove style = {{cursor:"pointer"}}/>
-              <Amount>1</Amount>
-              <Add style = {{cursor:"pointer"}}/>
+              <Remove
+                onClick={() => handleQuantity("dec")}
+                style={{ cursor: "pointer" }}
+              />
+              <Amount>{quantity}</Amount>
+              <Add
+                onClick={() => handleQuantity("inc")}
+                style={{ cursor: "pointer" }}
+              />
             </AmountContainer>
           </AddContainer>
-          <Button>ADD TO CART</Button>
+          <Button onClick={handleClick}>ADD TO CART</Button>
         </InfoContainer>
       </Wrapper>
       <Footer />
     </Container>
-  )
-}
+  );
+};
 
-export default Product
+export default SingleProduct;

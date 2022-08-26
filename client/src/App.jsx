@@ -4,6 +4,7 @@ import LogIn from "./pages/LogIn";
 import Cart from "./pages/Cart";
 import { BrowserRouter, Navigate, Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
+import SingleProduct from "./pages/SingleProduct";
 
 const App = () => {
   const user = true
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/login" element={user ? <Navigate to="/" /> : <LogIn />} />
         <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/products/:id" element={<SingleProduct />} />
       </Routes>
     </BrowserRouter>
   );
