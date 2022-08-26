@@ -2,7 +2,6 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import LogIn from "./pages/LogIn";
 import Cart from "./pages/Cart";
-import Product from "./pages/Product";
 import Profile from "./pages/Profile";
 import { BrowserRouter, Navigate, Routes } from "react-router-dom";
 import { Route } from "react-router-dom";

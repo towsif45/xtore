@@ -100,7 +100,6 @@ const Navbar = () => {
         <Center>
           <Logo>
             <Image src={logo} />
-            tore
           </Logo>
           <Logo>
             tore
