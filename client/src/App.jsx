@@ -8,6 +8,9 @@ import { Route } from "react-router-dom";
 import OrderHistory from "./pages/OrderHistory";
 
 import SingleProduct from "./pages/SingleProduct";
+import Profile from "./pages/Profile";
+import Success from "./pages/Success";
+import OrderHistory from "./pages/OrderHistory";
 
 
 const App = () => {
@@ -20,6 +23,9 @@ const App = () => {
         <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/products/:id" element={<SingleProduct />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/success" element={<Success />} />
+        <Route path="/orders" element={<OrderHistory />} />
       </Routes>
     </BrowserRouter>
   );
