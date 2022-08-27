@@ -49,13 +49,14 @@ const Center = styled.div`
   align-items: center;
 `;
 
-const Logo = styled.div`
+const Logo = styled.a`
   font-family: "Expletus Sans", cursive;
   font-size: 35px;
   color: #256d85;
   align-items: center;
   cursor: pointer;
   ${mobile({ fontSize: "24px" })}
+  text-decoration: none;
 `;
 
 const Image = styled.img`
@@ -76,13 +77,14 @@ const Right = styled.div`
   ${mobile({ flex: 2, justifyContent: "flex-end" })}
 `;
 
-const MenuItem = styled.div`
+const MenuItem = styled.a`
   font-size: 14 px;
   coursor: pointer;
   margin-left: 25px;
   color: #256d85;
   cursor: pointer;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  text-decoration: none;
 `;
 
 const Navbar = () => {
@@ -98,18 +100,14 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>
+          <Logo href = "/">
             <Image src={logo} />
           </Logo>
-          <Logo>tore</Logo>
+          <Logo href = "/">tore</Logo>
         </Center>
         <Right>
-          <Link to="/register">
-            <MenuItem>Register</MenuItem>
-          </Link>
-          <Link to="/login">
-            <MenuItem>Sign In</MenuItem>
-          </Link>
+          <MenuItem href = "/register">Register</MenuItem>
+          <MenuItem href = "/login">Sign In</MenuItem>
           <Link to="/cart">
             <MenuItem>
               <Badge badgeContent={quantity} color="#256D85">

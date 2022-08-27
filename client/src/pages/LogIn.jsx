@@ -18,11 +18,13 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-const Logo = styled.div`
+const Logo = styled.a`
   font-family: "Expletus Sans", cursive;
   font-size: 30px;
   color: #256d85;
   margin-bottom: 20px;
+  text-decoration: none;
+  cursor: pointer;
 `;
 const Image = styled.img`
   height: 35px;
@@ -99,10 +101,10 @@ const LogIn = () => {
     <Container>
       <Wrapper>
         <LogoContainer>
-          <Logo>
+          <Logo href = "/">
             <Image src={logo} />
           </Logo>
-          <Logo>tore</Logo>
+          <Logo href = "/">tore</Logo>
         </LogoContainer>
         {/* <Logo>
           <Image src = {logo}/>
