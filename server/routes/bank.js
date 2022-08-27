@@ -34,13 +34,19 @@ router.put("/", verifyTokenAndAuthorization, async (req, res) => {
         req.body.password,
         account.password
       );
+      
       if (pass_check) {
-        const updatedAccount = await BankAccount.findOneAndUpdate(
-          { accountNo: req.body.accountNo },
-          { balance: req.body.balance },
-          { new: true }
-        );
-        res.status(200).json(updatedAccount);
+        if(req.body.amount <= account.balance){
+          const updatedAccount = await BankAccount.findOneAndUpdate(
+            { accountNo: req.body.accountNo },
+            { balance: account.balance - req.body.amount },
+            { new: true }
+          );
+          res.status(200).json(updatedAccount);
+
+        } else{
+          res.status(405).json("Balance is low!");
+        }
       } else {
         res.status(400).json("Wrong password!");
       }

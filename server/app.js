@@ -10,6 +10,7 @@ const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const bankRoute = require("./routes/bank");
 const supplierRoute = require("./routes/supplier");
+const transactionRoute = require("./routes/transaction");
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/bank", bankRoute);
 app.use("/api/suppliers", supplierRoute);
+app.use("/api/transactions", transactionRoute);
 
 app.listen(5000, () => {
   console.log("Backend server is running...");

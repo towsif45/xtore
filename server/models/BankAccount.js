@@ -17,7 +17,7 @@ const BankAccountSchema = mongoose.Schema(
     },
     balance: {
       type: Number,
-      default: 500.0,
+      default: 50000.0,
     },
   },
   {
