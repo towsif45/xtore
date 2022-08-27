@@ -1,8 +1,11 @@
-import Sidebar from "./components/sidebar/Sidebar";
-import Topbar from "./components/topbar/Topbar";
 import "./App.css";
 import Home from "./pages/home/Home";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
@@ -10,41 +13,69 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
+import AppBody from "./pages/AppBody";
 
 function App() {
+  const admin = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
   return (
-    <Router>
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Topbar />
-        <div className="container">
-          <Sidebar />
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/login">
+            {admin ? <Redirect to="/" /> : <Login />}
+          </Route>
           <Route exact path="/">
-            <Home />
+            {admin ? (
+              <AppBody component={<Home />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
-          <Route path="/users">
-            <UserList />
+          <Route exact path="/users">
+            {admin ? (
+              <AppBody component={<UserList />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
-          <Route path="/user/:userId">
-            <User />
+          <Route exact path="/user/:userId">
+            {admin ? (
+              <AppBody component={<User />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
-          <Route path="/newUser">
-            <NewUser />
+          <Route exact path="/newUser">
+            {admin ? (
+              <AppBody component={<NewUser />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
-          <Route path="/products">
-            <ProductList />
+          <Route exact path="/products">
+            {admin ? (
+              <AppBody component={<ProductList />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
-          <Route path="/product/:productId">
-            <Product />
+          <Route exact path="/product/:productId">
+            {admin ? (
+              <AppBody component={<Product />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
-          <Route path="/newproduct">
-            <NewProduct />
+          <Route exact path="/newproduct">
+            {admin ? (
+              <AppBody component={<NewProduct />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
-        </div>
-      </Switch>
-    </Router>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
