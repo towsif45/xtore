@@ -16,11 +16,12 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
 `
-const Logo = styled.div`
+const Logo = styled.a`
   font-family: 'Expletus Sans', cursive;
   font-size: 35px;
   color: #256D85;
   margin-bottom: 20px;
+  text-decoration: none;
 `
 const Image = styled.img`
   height: 35px;
@@ -82,10 +83,10 @@ const Register = () => {
     <Container>
       <Wrapper>
         <LogoContainer>
-        <Logo>
+        <Logo href = "/">
           <Image src = {logo}/>
         </Logo>
-        <Logo>
+        <Logo href = "/">
           tore
         </Logo>
         </LogoContainer>
@@ -94,9 +95,9 @@ const Register = () => {
           <Input placeholder = "Name"></Input>
           <Input placeholder = "Username"></Input>
           <Input placeholder = "E-mail"></Input>
+          <Input placeholder = "Bank Account Number"></Input>
           <Input type = "password" placeholder="Password"></Input>
           <Input type = "password" placeholder = "Confirm Password"></Input>
-          <Input placeholder = "Bank Account"></Input>
           <Agreement>
             By creating an account, I consent to the processing of my personal data
             in accordance with the <u>PRIVACY POLICY</u>

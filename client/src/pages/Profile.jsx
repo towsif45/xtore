@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer"
 import { History } from "@material-ui/icons";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     // align-items: center;
@@ -57,10 +58,13 @@ const HistoryContainer = styled.div`
     position: absolute;
     top: 0;
     right: 0;
+    
 `
-const HistoryTitle = styled.div`
+const HistoryTitle = styled.a`
     margin-left: 5px;
     cursor: pointer;
+    text-decoration: none;
+    color: #256D85;
 `
 const Hr = styled.hr`
     background-color: #eee;
@@ -123,8 +127,8 @@ const Profile = () => {
                 </FullInfo>
             </InfoContainer>
             <HistoryContainer>
-                <History style = {{cursor: "pointer"}}/>
-                <HistoryTitle>
+                <Link to = "/orders"><History style = {{cursor: "pointer", color:"#256D85"}}/></Link>
+                <HistoryTitle href = "/orders">
                     Order History
                 </HistoryTitle>
             </HistoryContainer>
