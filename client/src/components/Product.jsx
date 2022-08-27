@@ -9,6 +9,7 @@ import styled from "styled-components";
 import phone from "../images/phone.png";
 import axios from "axios";
 import { mobile } from "../responsive";
+import { Link } from "react-router-dom";
 
 const ContainerOuter = styled.div`
   padding: 0px 50px;
@@ -27,33 +28,33 @@ const ProductInfo = styled.div`
   // color: #256D85;
   opacity: 0;
   z-index: 3;
-`
+`;
 const ProductName = styled.div`
   margin-top: 5px;
   font-size: 18px;
   font-weight: 400;
-  color: #256D85;
-  font-family: 'Expletus Sans', cursive;
-`
+  color: #256d85;
+  font-family: "Expletus Sans", cursive;
+`;
 const ProductPrice = styled.div`
-  font-family: 'Expletus Sans', cursive;
+  font-family: "Expletus Sans", cursive;
   font-weight: 200;
   font-size: 16px;
   color: #444444;
-`
+`;
 const CircleShape = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background-color: white;
   position: absolute;
-  z-index:2;
+  z-index: 2;
 `;
 
 const Image = styled.img`
   height: 75%;
   z-index: 3;
-  // ${mobile({height:"30vh"})}
+  // ${mobile({ height: "30vh" })}
 `;
 
 const Info = styled.div`
@@ -68,7 +69,6 @@ const Info = styled.div`
   opacity: 0;
   background-color: rgba(156, 180, 204, 0.5);
   transition: all 0.8s ease;
-
 `;
 const Icon = styled.div`
     height: 40px;
@@ -90,7 +90,7 @@ const Icon = styled.div`
     color: white;
   }
 
-`
+`;
 
 const ContainerInner = styled.div`
   flex: 1;
@@ -100,7 +100,7 @@ const ContainerInner = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #E4FBFF;
+  background-color: #e4fbff;
   position: relative;
   cursor: pointer;
   transition: all 0.5s ease;
@@ -109,38 +109,37 @@ const ContainerInner = styled.div`
     transform: scale(1.04);
     // z-index: 1;
     transition: all 0.5s ease;
-    }
+  }
 
-  &:hover ${Image}{
+  &:hover ${Image} {
     transform: scale(1.04);
     transition: all 0.5s ease;
     z-index: 3;
   }
 
-  &:hover ${CircleShape}{
+  &:hover ${CircleShape} {
     transition: all 0.1s ease;
     z-index: 3;
   }
 
-  &:hover ${Info}{
+  &:hover ${Info} {
     z-index: 2;
     opacity: 1;
     transition: all 0.5s ease;
   }
 
-  &:hover ${Icon}{
+  &:hover ${Icon} {
     z-index: 3;
     transition: all 0.5s ease;
   }
 
-  &:hover ${ProductInfo}{
+  &:hover ${ProductInfo} {
     // z-index: 2;
     opacity: 1;
     transform: scale(1.1);
     transition: all 0.5s ease;
   }
-
-`
+`;
 const Product = () => {
   const [products, setProducts] = useState([]);
 
@@ -158,28 +157,25 @@ const Product = () => {
   return (
     <ContainerOuter>
       {products.map((item) => (
-        <ContainerInner>
-          <ProductInfo>
-            <ProductName>
-              One Plus Nord n20
-            </ProductName>
-            <ProductPrice>
-              $250
-            </ProductPrice>
-          </ProductInfo>
-          <CircleShape />
-          <Image src={phone} />
-          <Info>
-            <Icon>
-              <ShoppingCartOutlined />
-            </Icon>
-            <Icon>
-              <FavoriteBorderOutlined />
-            </Icon>
-          </Info>
-        </ContainerInner>
-        
-    ))}
+        <Link to={"/products/"+item._id}>
+          <ContainerInner>
+            <ProductInfo>
+              <ProductName>{item.title}</ProductName>
+              <ProductPrice>$ {item.price}</ProductPrice>
+            </ProductInfo>
+            <CircleShape />
+            <Image src={phone} />
+            <Info>
+              <Icon>
+                <ShoppingCartOutlined />
+              </Icon>
+              <Icon>
+                <FavoriteBorderOutlined />
+              </Icon>
+            </Info>
+          </ContainerInner>
+        </Link>
+      ))}
     </ContainerOuter>
   );
 };

@@ -7,7 +7,8 @@ const Success = () => {
   const location = useLocation();
   //in Cart.jsx I sent data and cart. Please check that page for the changes.(in video it's only data)
   const state = location.state;
-  console.log(location);
+  console.log(state);
+  //const data = state.data
   
   return (
     <div>
