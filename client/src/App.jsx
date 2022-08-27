@@ -2,7 +2,6 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import LogIn from "./pages/LogIn";
 import Cart from "./pages/Cart";
-import Profile from "./pages/Profile";
 import { BrowserRouter, Navigate, Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import OrderHistory from "./pages/OrderHistory";
@@ -10,7 +9,7 @@ import OrderHistory from "./pages/OrderHistory";
 import SingleProduct from "./pages/SingleProduct";
 import Profile from "./pages/Profile";
 import Success from "./pages/Success";
-import OrderHistory from "./pages/OrderHistory";
+
 
 
 const App = () => {
