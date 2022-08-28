@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+
 import {
   AccountCircle,
   Search,
   ShoppingCartOutlined,
 } from "@material-ui/icons";
+
 import { Badge } from "@material-ui/core";
 import logo from "../images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -120,6 +122,7 @@ const Navbar = () => {
           <Logo href="/">tore</Logo>
         </Center>
         <Right>
+
           {!user && (
             <>
               <MenuItem href="/register">Register</MenuItem>
@@ -144,6 +147,7 @@ const Navbar = () => {
               <MenuItem onClick={handleSignout}>Sign Out</MenuItem>
             </>
           )}
+
         </Right>
       </Wrapper>
     </Container>
