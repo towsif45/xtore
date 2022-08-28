@@ -23,6 +23,7 @@ router.post("/", async (req, res) => {
 
 // Update balance
 router.put("/", async (req, res) => {
+  console.log(req.body);
   try {
     const account = await BankAccount.findOne({
       accountNo: req.body.accountNo,

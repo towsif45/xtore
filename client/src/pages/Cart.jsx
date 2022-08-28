@@ -7,6 +7,8 @@ import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { userRequest } from "../requestMethods";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const Container = styled.div``;
 
@@ -145,38 +147,49 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
+  const user = useSelector((state) => state.user.currentUser);
+  const id = user.others._id;
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  const [bank, setBank] = useState(0);
+
+  useEffect(() => {
+    const getBank = async () => {
+      const res = await userRequest.get("/bank/find/" + id);
+      console.log(res.data);
+      setBank(res.data);
+    };
+    getBank();
+  }, [id]);
 
   //console.log(cart);
   const handleClick = async (event) => {
     event.preventDefault();
-    try {
-      const accountNo = "420420420";
-      const bank = await userRequest.get("/bank/" + accountNo);
-      console.log(bank.data.balance);
-      if (cart.total <= bank.data.balance) {
-        const res = await userRequest.post("/transactions", {
-          userId: "test",
-          from_bank_account: accountNo,
-          to_bank_account: "421421421",
-          amount: cart.total,
-        });
-        const updatedAccount = await userRequest.put("/bank/", {
-          accountNo: accountNo,
-          amount: cart.total,
-          password: "123456",
-        });
-        console.log("Cart is", cart);
-        console.log("res.data", res.data);
-        console.log(updatedAccount.data);
-        navigate("/success", {
-          state: { products: cart, data: res.data, bank: updatedAccount.data },
-        });
-      }
-    } catch (err) {
-      console.log(err);
-    }
+      navigate("/success", {
+        state: { bank: bank },
+      });
+
+    // try {
+    //   if (cart.total <= bank.data.balance) {
+    //     const res = await userRequest.post("/transactions", {
+    //       userId: id,
+    //       from_bank_account: bank.accountNo,
+    //       to_bank_account: "421421421",
+    //       amount: cart.total,
+    //     });
+    //     const updatedAccount = await publicRequest.put("/bank/", {
+    //       accountNo: bank.accountNo,
+    //       amount: cart.total,
+    //       password: "123456",
+    //     });
+    //     console.log("Cart is", cart);
+    //     console.log("res.data", res.data);
+    //     console.log(updatedAccount.data);
+    //
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
   return (
     <Container>
@@ -237,7 +250,7 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Bank Account Balance</SummaryItemText>
-              <SummaryItemPrice>$ 1000</SummaryItemPrice>
+              <SummaryItemPrice>$ {bank.balance}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Sub-total</SummaryItemText>
