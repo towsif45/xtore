@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
+import {
+  AccountCircle,
+  Search,
+  ShoppingCartOutlined,
+} from "@material-ui/icons";
 import { Badge } from "@material-ui/core";
 import logo from "../images/logo.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { mobile } from "../responsive";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../redux/userRedux";
 
 const Container = styled.div`
   height: 65px;
@@ -71,7 +76,7 @@ const Image = styled.img`
 const Right = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-end;
   color: #256d85;
   ${mobile({ flex: 2, justifyContent: "flex-end" })}
@@ -85,11 +90,20 @@ const MenuItem = styled.a`
   cursor: pointer;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
   text-decoration: none;
+  display: flex;
 `;
 
 const Navbar = () => {
+  const user = useSelector((state) => state.user.currentUser);
   const quantity = useSelector((state) => state.cart.quantity);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   console.log(quantity);
+  const handleSignout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    navigate("/");
+  };
   return (
     <Container>
       <Wrapper>
@@ -100,21 +114,36 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo href = "/">
+          <Logo href="/">
             <Image src={logo} />
           </Logo>
-          <Logo href = "/">tore</Logo>
+          <Logo href="/">tore</Logo>
         </Center>
         <Right>
-          <MenuItem href = "/register">Register</MenuItem>
-          <MenuItem href = "/login">Sign In</MenuItem>
-          <Link to="/cart">
-            <MenuItem>
-              <Badge badgeContent={quantity} color="#256D85">
-                <ShoppingCartOutlined />
-              </Badge>
-            </MenuItem>
-          </Link>
+          {!user && (
+            <>
+              <MenuItem href="/register">Register</MenuItem>
+              <MenuItem href="/login">Sign In</MenuItem>
+            </>
+          )}
+
+          {user && (
+            <>
+              <Link to="/cart">
+                <MenuItem>
+                  <Badge badgeContent={quantity} color="#256D85">
+                    <ShoppingCartOutlined />
+                  </Badge>
+                </MenuItem>
+              </Link>
+              {/* <Link to="/profile"> */}
+              <MenuItem href="/profile">
+                <AccountCircle sx={{ alignItems: "flex-end" }} />
+              </MenuItem>
+              {/* </Link> */}
+              <MenuItem onClick={handleSignout}>Sign Out</MenuItem>
+            </>
+          )}
         </Right>
       </Wrapper>
     </Container>

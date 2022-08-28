@@ -77,13 +77,13 @@ const Hr = styled.hr`
 `;
 
 const Profile = () => {
-    const [bankAccount, setBankAccount] = useState({});
+  const [bankAccount, setBankAccount] = useState({});
   const user = useSelector((state) => state.user.currentUser);
   console.log(user.others);
   useEffect(() => {
     const getBankAccount = async () => {
       try {
-        const res = await publicRequest("/bank/find/"+user.others._id);
+        const res = await publicRequest("/bank/find/" + user.others._id);
         console.log(res.data);
         setBankAccount(res.data);
       } catch (err) {}

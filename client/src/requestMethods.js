@@ -3,9 +3,8 @@ import axios from "axios";
 const BASE_URL = "http://localhost:5000/api/";
 let TOKEN = null;
 
-if (JSON.parse(localStorage.getItem("persist:root")) !== null) {
-  TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
-    .currentUser.accessToken;
+if (JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser !== null) {
+  TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
 }
 
 console.log(TOKEN)
