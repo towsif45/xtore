@@ -4,24 +4,35 @@ export default function WidgetLg() {
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };
+
+  //const []
+
+
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">Latest transactions</h3>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginRight: "30px",
+          marginLeft: "20px",
+        }}
+      >
+        <h3 style={{ flex: 10 }} className="widgetLgTitle">
+          Latest orders
+        </h3>
+        <button style={{ flex: 1 }}>VIEW ALL </button>
+      </div>
       <table className="widgetLgTable">
         <tr className="widgetLgTr">
-          <th className="widgetLgTh">Customer</th>
+          <th className="widgetLgTh">OrderID</th>
           <th className="widgetLgTh">Date</th>
           <th className="widgetLgTh">Amount</th>
           <th className="widgetLgTh">Status</th>
         </tr>
         <tr className="widgetLgTr">
           <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Susan Carol</span>
+            <span className="widgetLgName">kjhfkjashkfjh</span>
           </td>
           <td className="widgetLgDate">2 Jun 2021</td>
           <td className="widgetLgAmount">$122.00</td>
@@ -31,12 +42,7 @@ export default function WidgetLg() {
         </tr>
         <tr className="widgetLgTr">
           <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Susan Carol</span>
+            <span className="widgetLgName">6g5er6vgfe</span>
           </td>
           <td className="widgetLgDate">2 Jun 2021</td>
           <td className="widgetLgAmount">$122.00</td>
@@ -46,12 +52,7 @@ export default function WidgetLg() {
         </tr>
         <tr className="widgetLgTr">
           <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Susan Carol</span>
+            <span className="widgetLgName">3565fdsgv</span>
           </td>
           <td className="widgetLgDate">2 Jun 2021</td>
           <td className="widgetLgAmount">$122.00</td>
@@ -61,12 +62,7 @@ export default function WidgetLg() {
         </tr>
         <tr className="widgetLgTr">
           <td className="widgetLgUser">
-            <img
-              src="https://images.pexels.com/photos/4172933/pexels-photo-4172933.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              alt=""
-              className="widgetLgImg"
-            />
-            <span className="widgetLgName">Susan Carol</span>
+            <span className="widgetLgName">354fdgregergv5</span>
           </td>
           <td className="widgetLgDate">2 Jun 2021</td>
           <td className="widgetLgAmount">$122.00</td>

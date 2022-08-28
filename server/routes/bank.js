@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
 });
 
 // Update balance
-router.put("/", verifyTokenAndAuthorization, async (req, res) => {
+router.put("/", async (req, res) => {
   try {
     const account = await BankAccount.findOne({
       accountNo: req.body.accountNo,
@@ -34,17 +34,16 @@ router.put("/", verifyTokenAndAuthorization, async (req, res) => {
         req.body.password,
         account.password
       );
-      
+
       if (pass_check) {
-        if(req.body.amount <= account.balance){
+        if (req.body.amount <= account.balance) {
           const updatedAccount = await BankAccount.findOneAndUpdate(
             { accountNo: req.body.accountNo },
             { balance: account.balance - req.body.amount },
             { new: true }
           );
           res.status(200).json(updatedAccount);
-
-        } else{
+        } else {
           res.status(405).json("Balance is low!");
         }
       } else {
@@ -57,11 +56,24 @@ router.put("/", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 // Get account by account number
-router.get("/:accountNo", verifyTokenAndAuthorization, async (req, res) => {
+router.get("/:accountNo", async (req, res) => {
   try {
     const account = await BankAccount.findOne({
       accountNo: req.params.accountNo,
     });
+    res.status(200).json(account);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET ACCOUNT WITH ID
+router.get("/find/:id", async (req, res) => {
+  try {
+    const account = await BankAccount.findOne({
+      userId: req.params.id,
+    });
+    console.log(req.params.id);
     res.status(200).json(account);
   } catch (err) {
     res.status(500).json(err);

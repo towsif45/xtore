@@ -1,16 +1,11 @@
 const BankAccount = require("../models/BankAccount");
 const Transaction = require("../models/Transaction");
-const {
-  verifyTokenAndAuthorization,
-  verifyTokenAndAdmin,
-} = require("./verifyToken");
-
 const router = require("express").Router();
 
 // POST A NEW TRANSACTION
-router.post("/", verifyTokenAndAuthorization, async (req, res) => {
+router.post("/", async (req, res) => {
   const transaction = new Transaction(req.body);
-  console.log("jklk"+transaction.amount);
+  console.log("jklk" + transaction.amount);
 
   try {
     const reciepentAccount = await BankAccount.findOne({
@@ -33,7 +28,7 @@ router.post("/", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 // GET ALL TRANSACTIONS OF A USER
-router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
+router.get("/find/:userId", async (req, res) => {
   try {
     const transactions = await Transaction.find({ userId: req.params.userId });
     res.status(200).json(transactions);
@@ -43,7 +38,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 // GET ALL TRANSACTIONS
-router.get("/find/", verifyTokenAndAdmin, async (req, res) => {
+router.get("/find/", async (req, res) => {
   try {
     const transactions = await Transaction.find();
     res.status(200).json(transactions);

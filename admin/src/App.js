@@ -14,9 +14,13 @@ import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
 import AppBody from "./pages/AppBody";
+import Transaction from "./pages/Transaction";
+import Order from "./pages/Order";
 
 function App() {
-  const admin = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser.accessToken;
+  const admin = JSON.parse(
+    JSON.parse(localStorage.getItem("persist:root")).user
+  ).currentUser.accessToken;
   return (
     <>
       <Router>
@@ -69,6 +73,20 @@ function App() {
           <Route exact path="/newproduct">
             {admin ? (
               <AppBody component={<NewProduct />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
+          </Route>
+          <Route exact path="/transactions">
+            {admin ? (
+              <AppBody component={<Transaction />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
+          </Route>
+          <Route exact path="/orders">
+            {admin ? (
+              <AppBody component={<Order />} />
             ) : (
               <Redirect to="/login" />
             )}

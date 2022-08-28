@@ -1,11 +1,10 @@
 import "./sidebar.css";
 import {
   LineStyle,
-  Timeline,
-  TrendingUp,
   PermIdentity,
   Storefront,
   AttachMoney,
+  AddBox,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -34,15 +33,30 @@ export default function Sidebar() {
                 Products
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
+            <Link to="/transactions" className="link">
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Transactions
+              </li>
+            </Link>
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
-          <ul className="sidebarList"></ul>
+          <ul className="sidebarList">
+            <Link to="/newproduct" className="link">
+              <li className="sidebarListItem">
+                <AddBox className="sidebarIcon" />
+                Add new product
+              </li>
+            </Link>
+            <Link to="/orders" className="link">
+              <li className="sidebarListItem">
+                <AddBox className="sidebarIcon" />
+                Order New Product
+              </li>
+            </Link>
+          </ul>
         </div>
       </div>
     </div>
