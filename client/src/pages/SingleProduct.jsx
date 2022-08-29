@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Add, Remove } from "@material-ui/icons";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import headphone from "../images/headphonerbg.png";
 import { mobile } from "../responsive";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -164,7 +163,7 @@ const SingleProduct = () => {
       <Navbar />
       <Wrapper>
         <ImgContainer>
-          <Image src={headphone} />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
           <Title> {product.title} </Title>

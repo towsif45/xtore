@@ -9,7 +9,6 @@ import { resetCart } from "../redux/cartRedux";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
-import { Typography } from "@material-ui/core";
 // import { userRequest } from "../requestMethods";
 
 const Container = styled.div`
@@ -17,17 +16,17 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 const TitleText = styled.div`
-  color: #256D85;
+  color: #256d85;
   font-weight: 400;
   font-size: 20px;
   margin: 30px;
-`
+`;
 const DescText = styled.p`
   margin: 0px 0px 10px 0px;
-  color: #256D85;
-`
+  color: #256d85;
+`;
 
 const Button = styled.button`
     width: 120px;
@@ -64,6 +63,7 @@ const Success = () => {
   const location = useLocation();
   const bank = location.state.bank;
   const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -90,7 +90,7 @@ const Success = () => {
           userId: id,
           products: cart.combinedProducts,
           amount: cart.total,
-          address: "Sylhet",
+          address: address,
         });
         console.log("Cart is", cart.combinedProducts);
         console.log("res.data", res.data);
@@ -108,12 +108,12 @@ const Success = () => {
 
   return (
     <Container>
-      <Navbar/>
+      <Navbar />
       <TitleText>Your order preview</TitleText>
       {/* <DescText> */}
-        {cart.products.map((product) => {
-          return <DescText> {product.title} </DescText>;
-        })}
+      {cart.products.map((product) => {
+        return <DescText> {product.title} </DescText>;
+      })}
       {/* </DescText> */}
       {/* <div> */}
       {/* Your order preview: */}
@@ -121,18 +121,21 @@ const Success = () => {
         return <div> {product.title} </div>;
       })} */}
       {/* <InputContainer></InputContainer> */}
-      <Input sx = {{display:'flex', justifyContent: 'center'}}
-        placeholder="Enter Bank Pin"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Input sx = {{display:'flex', justifyContent: 'center'}}
+
+      <Input
+        sx={{ display: "flex", justifyContent: "center" }}
         placeholder="Enter Shipping Address"
+        onChange={(e) => setAddress(e.target.value)}
+      />
+      <Input
+        sx={{ display: "flex", justifyContent: "center" }}
+        placeholder="Enter Bank Pin"
         onChange={(e) => setPassword(e.target.value)}
       />
       <Button onClick={handleClick}>CONFIRM</Button>
       {error && <Error> Balance is low! </Error>}
-    {/* </div> */}
-    <Footer/>
+      {/* </div> */}
+      <Footer />
     </Container>
   );
 };
