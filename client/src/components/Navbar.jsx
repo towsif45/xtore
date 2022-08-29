@@ -18,6 +18,7 @@ import { useState } from "react";
 const Container = styled.div`
   height: 65px;
   background-color: #e4fbff;
+  width: 100%;
   ${mobile({ height: "50px" })}
 `;
 

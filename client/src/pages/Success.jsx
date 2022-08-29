@@ -6,11 +6,33 @@ import { publicRequest, userRequest } from "../requestMethods";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { resetCart } from "../redux/cartRedux";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { mobile } from "../responsive";
+import { Typography } from "@material-ui/core";
 // import { userRequest } from "../requestMethods";
 
+const Container = styled.div`
+  // background-color: #E4FBFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const TitleText = styled.div`
+  color: #256D85;
+  font-weight: 400;
+  font-size: 20px;
+  margin: 30px;
+`
+const DescText = styled.p`
+  margin: 0px 0px 10px 0px;
+  color: #256D85;
+`
+
 const Button = styled.button`
-    width: 100px;
-    padding 10px;
+    width: 120px;
+    margin: 30px;
+    padding 12px;
     background-color: #256D85;
     color: white;
     font-weight: 600;
@@ -23,11 +45,13 @@ const Button = styled.button`
     }
 `;
 const Input = styled.input`
-  width: 65%;
-  margin: 20px 10px 0px 0px;
+  width: 20%;
+  height: 25px;
+  margin: 20px 0px 0px 0px;
   padding: 10px;
   border-color: #256d85;
   border: 0.1px solid lightgray;
+  ${mobile({ width: "50%" })}
 `;
 
 const Error = styled.span`
@@ -83,18 +107,33 @@ const Success = () => {
   };
 
   return (
-    <div>
-      Your order preview:
-      {cart.products.map((product) => {
+    <Container>
+      <Navbar/>
+      <TitleText>Your order preview</TitleText>
+      {/* <DescText> */}
+        {cart.products.map((product) => {
+          return <DescText> {product.title} </DescText>;
+        })}
+      {/* </DescText> */}
+      {/* <div> */}
+      {/* Your order preview: */}
+      {/* {cart.products.map((product) => {
         return <div> {product.title} </div>;
-      })}
-      <Input
-        placeholder="Enter bank password"
+      })} */}
+      {/* <InputContainer></InputContainer> */}
+      <Input sx = {{display:'flex', justifyContent: 'center'}}
+        placeholder="Enter Bank Pin"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <Input sx = {{display:'flex', justifyContent: 'center'}}
+        placeholder="Enter Shipping Address"
         onChange={(e) => setPassword(e.target.value)}
       />
       <Button onClick={handleClick}>CONFIRM</Button>
       {error && <Error> Balance is low! </Error>}
-    </div>
+    {/* </div> */}
+    <Footer/>
+    </Container>
   );
 };
 
