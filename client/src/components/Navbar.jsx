@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import {
@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { mobile } from "../responsive";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../redux/userRedux";
+import { useState } from "react";
 
 const Container = styled.div`
   height: 65px;
@@ -97,10 +98,29 @@ const MenuItem = styled.a`
 
 const Navbar = () => {
   const user = useSelector((state) => state.user.currentUser);
-  const quantity = useSelector((state) => state.cart.quantity);
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(quantity);
+  const [cartCombined, setCartCombined] = useState([]);
+  console.log(cart);
+  useEffect(() => {
+    const c = Object.values(
+      cart.products.reduce((obj, product) => {
+        if (obj[product._id]) {
+          obj[product._id].quantity += product.quantity;
+        } else {
+          obj[product._id] = {
+            _id: product._id,
+            title: product.title,
+            price: product.price,
+            quantity: product.quantity,
+          };
+        }
+        return obj;
+      }, {})
+    );
+    setCartCombined(c);
+  }, [cart.products]);
   const handleSignout = (e) => {
     e.preventDefault();
     dispatch(logout());
@@ -122,7 +142,6 @@ const Navbar = () => {
           <Logo href="/">tore</Logo>
         </Center>
         <Right>
-
           {!user && (
             <>
               <MenuItem href="/register">Register</MenuItem>
@@ -134,7 +153,7 @@ const Navbar = () => {
             <>
               <Link to="/cart">
                 <MenuItem>
-                  <Badge badgeContent={quantity} color="#256D85">
+                  <Badge badgeContent={cartCombined.length} color="#256D85">
                     <ShoppingCartOutlined />
                   </Badge>
                 </MenuItem>
@@ -147,7 +166,6 @@ const Navbar = () => {
               <MenuItem onClick={handleSignout}>Sign Out</MenuItem>
             </>
           )}
-
         </Right>
       </Wrapper>
     </Container>

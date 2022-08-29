@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import headphone from "../images/headphonerbg.png";
 import { Add, Remove } from "@material-ui/icons";
 import { mobile } from "../responsive";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { userRequest } from "../requestMethods";
 import { useEffect } from "react";
@@ -79,12 +79,12 @@ const Details = styled.div`
 `;
 const ProductName = styled.span``;
 const ProductId = styled.span``;
-const ProductColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-`;
+// const ProductColor = styled.div`
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   background-color: ${(props) => props.color};
+// `;
 const PriceDetail = styled.div`
   flex: 1;
   display: flex;
@@ -152,6 +152,27 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const [bank, setBank] = useState(0);
+  const [cartCombined, setCartCombined] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const c = Object.values(
+      cart.products.reduce((obj, product) => {
+        if (obj[product._id]) {
+          obj[product._id].quantity += product.quantity;
+        } else {
+          obj[product._id] = {
+            _id: product._id,
+            title: product.title,
+            price: product.price,
+            quantity: product.quantity,
+          };
+        }
+        return obj;
+      }, {})
+    );
+    setCartCombined(c);
+  }, [cart.products, dispatch]);
 
   useEffect(() => {
     const getBank = async () => {
@@ -162,12 +183,17 @@ const Cart = () => {
     getBank();
   }, [id]);
 
-  //console.log(cart);
+  console.log(cartCombined);
+
   const handleClick = async (event) => {
     event.preventDefault();
+    if(cartCombined.length > 0) {
+
+      
       navigate("/success", {
         state: { bank: bank },
       });
+    }
 
     // try {
     //   if (cart.total <= bank.data.balance) {
@@ -214,7 +240,7 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            {cart.products.map((product) => (
+            {cartCombined.map((product) => (
               <>
                 <Product>
                   <ProductDetail>
@@ -227,7 +253,7 @@ const Cart = () => {
                         <b>ID: </b>
                         {product._id}
                       </ProductId>
-                      <ProductColor color={product.color} />
+                      {/* <ProductColor color={product.color} /> */}
                     </Details>
                   </ProductDetail>
                   <PriceDetail>

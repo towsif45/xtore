@@ -8,8 +8,14 @@ const OrderSchema = new mongoose.Schema(
     },
     products: [
       {
-        productId: {
+        _id: {
           type: String,
+        },
+        title: {
+          type: String,
+        },
+        price: {
+          type: Number,
         },
         quantity: {
           type: Number,
@@ -18,17 +24,17 @@ const OrderSchema = new mongoose.Schema(
       },
     ],
     amount: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     address: {
-        type: Object,
-        required: true
+      type: Object,
+      required: true,
     },
-    status:{
-        type: String,
-        default: "Pending"
-    }
+    status: {
+      type: String,
+      default: "Pending",
+    },
   },
   {
     timestamps: true,
