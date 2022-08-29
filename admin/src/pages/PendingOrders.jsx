@@ -14,7 +14,7 @@ const Order = () => {
     fetchOrders();
   }, []);
   return (
-    <div style={{ flex: 4 }}>
+    <div style={{ flex: 4, color: "#256D85", textAlign:'center', padding: 20}}>
       <Typography variant="h5" color="#256D85">
         Pending Orders
       </Typography>
