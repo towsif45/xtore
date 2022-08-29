@@ -13,7 +13,8 @@ import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
 import AppBody from "./pages/AppBody";
 import Transaction from "./pages/Transaction";
-import Order from "./pages/Order";
+import PendingOrders from "./pages/PendingOrders";
+import AllOrders from "./pages/AllOrders";
 
 function App() {
 
@@ -79,9 +80,16 @@ function App() {
               <Redirect to="/login" />
             )}
           </Route>
+          <Route exact path="/pendingorders">
+            {admin ? (
+              <AppBody component={<PendingOrders />} />
+            ) : (
+              <Redirect to="/login" />
+            )}
+          </Route>
           <Route exact path="/orders">
             {admin ? (
-              <AppBody component={<Order />} />
+              <AppBody component={<AllOrders />} />
             ) : (
               <Redirect to="/login" />
             )}

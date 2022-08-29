@@ -50,10 +50,16 @@ export default function Sidebar() {
                 Add new product
               </li>
             </Link>
-            <Link to="/orders" className="link">
+            <Link to="/pendingorders" className="link">
               <li className="sidebarListItem">
                 <AddBox className="sidebarIcon" />
                 Pending Orders
+              </li>
+            </Link>
+            <Link to="/orders" className="link">
+              <li className="sidebarListItem">
+                <AddBox className="sidebarIcon" />
+                All Orders
               </li>
             </Link>
           </ul>

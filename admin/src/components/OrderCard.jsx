@@ -6,6 +6,8 @@ import CardContent from "@material-ui/core/CardContent";
 // import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import { userRequest } from "../requestMethods";
 
 const useStyles = makeStyles({
   root: {
@@ -48,10 +50,26 @@ const useStyles = makeStyles({
 });
 
 export default function OrderCard(props) {
-  const { id, products, amount, status, date } = props;
-  const formatted_date = date.split("T")[0];
+  const { order } = props;
+  const formatted_date = order.createdAt.split("T")[0];
   const classes = useStyles();
+
   const bull = <span className={classes.bullet}>•</span>;
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    const updateOrderStatus = async () => {
+      try {
+        const res = await userRequest.put("/orders/" + order._id, {
+          status: "Approved",
+        });
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    updateOrderStatus();
+  };
 
   return (
     <Card className={classes.root} variant="outlined">
@@ -64,9 +82,9 @@ export default function OrderCard(props) {
           Date: {formatted_date}
         </Typography>
         <Typography className={classes.pos} variant="h6" component="h2">
-          Order ID: {id}
+          Order ID: {order._id}
         </Typography>
-        {products.map((product) => {
+        {order.products.map((product) => {
           return (
             <Typography className={classes.body} variant="body2" component="p">
               Product: {product.title}
@@ -77,9 +95,22 @@ export default function OrderCard(props) {
       </CardContent>
       <CardContent className={classes.status}>
         <Box sx={{ marginTop: 10 }}>
-          <Typography color="textSecondary">Total Cost: $ {amount}</Typography>
+          <Typography color="textSecondary">
+            Total Cost: $ {order.amount}
+          </Typography>
         </Box>
-        <Typography>{status}</Typography>
+        <Typography>{order.status}</Typography>
+        {order.status === "Pending" && (
+          <Box sx={{ marginTop: 10 }}>
+            <Button
+              variant="contained"
+              color="textSecondary"
+              onClick={handleClick}
+            >
+              Approve
+            </Button>
+          </Box>
+        )}
       </CardContent>
     </Card>
   );

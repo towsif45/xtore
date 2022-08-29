@@ -21,7 +21,7 @@ router.post("/", verifyToken, async (req, res) => {
 // Update
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
-    const updatedOrder = await updatedOrder.findByIdAndUpdate(
+    const updatedOrder = await Order.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
@@ -45,7 +45,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
 });
 
 // Get user orders
-router.get("/find/:userId", async (req, res) => {
+router.get("/find/:userId", verifyTokenAndAuthorization, async (req, res) => {
   try {
     const orders = await Order.find({ userId: req.params.userId });
     console.log(orders);
@@ -59,6 +59,16 @@ router.get("/find/:userId", async (req, res) => {
 router.get("/", verifyTokenAndAdmin, async (req, res) => {
   try {
     const orders = await Order.find();
+    res.status(200).json(orders);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// GET BY STATUS
+router.get("/find/status/:status", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const orders = await Order.find({status: req.params.status});
     res.status(200).json(orders);
   } catch (err) {
     res.status(500).json(err);
