@@ -1,5 +1,4 @@
 import "./App.css";
-import Home from "./pages/home/Home";
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,7 +39,7 @@ function App() {
           </Route>
           <Route exact path="/">
             {admin ? (
-              <AppBody component={<Home />} />
+              <AppBody component={<PendingOrders />} />
             ) : (
               <Redirect to="/login" />
             )}
@@ -76,13 +75,6 @@ function App() {
           <Route exact path="/transactions">
             {admin ? (
               <AppBody component={<Transaction />} />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
-          <Route exact path="/pendingorders">
-            {admin ? (
-              <AppBody component={<PendingOrders />} />
             ) : (
               <Redirect to="/login" />
             )}

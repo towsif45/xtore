@@ -156,23 +156,24 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const c = Object.values(
-      cart.products.reduce((obj, product) => {
-        if (obj[product._id]) {
-          obj[product._id].quantity += product.quantity;
-        } else {
-          obj[product._id] = {
-            _id: product._id,
-            title: product.title,
-            price: product.price,
-            quantity: product.quantity,
-          };
-        }
-        return obj;
-      }, {})
-    );
-    setCartCombined(c);
-  }, [cart.products, dispatch]);
+    // const c = Object.values(
+    //   cart.products.reduce((obj, product) => {
+    //     if (obj[product._id]) {
+    //       obj[product._id].quantity += product.quantity;
+    //     } else {
+    //       obj[product._id] = {
+    //         _id: product._id,
+    //         img: product.img,
+    //         title: product.title,
+    //         price: product.price,
+    //         quantity: product.quantity,
+    //       };
+    //     }
+    //     return obj;
+    //   }, {})
+    // );
+    setCartCombined(cart.combinedProducts);
+  }, [cart.combinedProducts, dispatch]);
 
   useEffect(() => {
     const getBank = async () => {
@@ -187,9 +188,7 @@ const Cart = () => {
 
   const handleClick = async (event) => {
     event.preventDefault();
-    if(cartCombined.length > 0) {
-
-      
+    if (cartCombined.length > 0) {
       navigate("/success", {
         state: { bank: bank },
       });
@@ -244,7 +243,7 @@ const Cart = () => {
               <>
                 <Product>
                   <ProductDetail>
-                    <Image src={headphone} />
+                    <Image src={product.img} />
                     <Details>
                       <ProductName>
                         <b>Product: </b> {product.title}

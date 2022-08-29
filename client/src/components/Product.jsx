@@ -16,7 +16,7 @@ const ContainerOuter = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 `;
 const ProductInfo = styled.div`
   position: absolute;
@@ -93,8 +93,8 @@ const Icon = styled.div`
 `;
 
 const ContainerInner = styled.div`
-  flex: 1;
-  margin: 20px 0px 0px;
+  //flex: 1;
+  margin: 20px 20px 0px;
   max-width: 280px;
   height: 350px;
   display: flex;
@@ -164,7 +164,7 @@ const Product = () => {
               <ProductPrice>$ {item.price}</ProductPrice>
             </ProductInfo>
             <CircleShape />
-            <Image src={phone} />
+            <Image src={item.img} />
             <Info>
               <Icon>
                 <ShoppingCartOutlined />

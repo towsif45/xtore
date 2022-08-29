@@ -20,6 +20,7 @@ const cartSlice = createSlice({
           } else {
             obj[product._id] = {
               _id: product._id,
+              img: product.img,
               title: product.title,
               price: product.price,
               quantity: product.quantity,
