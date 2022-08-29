@@ -53,7 +53,7 @@ export default function Sidebar() {
             <Link to="/orders" className="link">
               <li className="sidebarListItem">
                 <AddBox className="sidebarIcon" />
-                Order New Product
+                Pending Orders
               </li>
             </Link>
           </ul>

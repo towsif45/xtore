@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User");
+const BankAccount = require("../models/BankAccount");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
@@ -24,9 +25,6 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
-
-    
-
     if (!user) {
       res.status(400).json("Wrong credentials!");
     } else {
@@ -35,12 +33,39 @@ router.post("/login", async (req, res) => {
         res.status(420).json("Wrong credentials!");
       } else {
         const { password, ...others } = user._doc;
-        
-        
         const accessToken = jwt.sign(
           {
             id: user._id,
             isAdmin: user.isAdmin,
+          },
+          "youknowhowflamescanhypnotize",
+          { expiresIn: "60d" }
+        );
+        console.log(accessToken);
+        res.status(201).json({ others, accessToken });
+      }
+    }
+  } catch (err) {
+    res.status(501).json(err);
+  }
+});
+
+// BANK LOGIN
+router.post("/banklogin", async (req, res) => {
+  try {
+    const bank = await BankAccount.findOne({ accountNo: req.body.accountNo });
+    console.log(bank);
+    if (!bank) {
+      res.status(400).json("Wrong credentials!");
+    } else {
+      const pass_check = await bcrypt.compare(req.body.password, bank.password);
+      if (!pass_check) {
+        res.status(420).json("Wrong credentials!");
+      } else {
+        const { password, ...others } = bank._doc;
+        const accessToken = jwt.sign(
+          {
+            id: bank._id,
           },
           "youknowhowflamescanhypnotize",
           { expiresIn: "60d" }

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { Box } from "@material-ui/core"
 import SimpleCard from "../components/Card"
-import Navbar from "../components/navbar"
+import Navbar from "../components/Navbar"
 
 
 const Container = styled.div`

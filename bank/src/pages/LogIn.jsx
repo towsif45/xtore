@@ -1,4 +1,7 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { login } from "../redux/apiCalls";
 
 const Container = styled.div`
   width: 100vw;
@@ -6,7 +9,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #F6E6CB;
+  background-color: #f6e6cb;
   flex-direction: column;
   position: relative;
 `;
@@ -74,56 +77,53 @@ const TextContainer = styled.div`
 const Link = styled.a`
   margin-left: 10px;
 `;
-const Error = styled.span`
-  color: red;
-`;
+
+// const Error = styled.span`
+//   color: red;
+// `;
+
 const LogIn = () => {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const dispatch = useDispatch();
+  const [accountNo, setAccountNo] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   // const { isFetching, error } = useSelector((state) => state.user);
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   login(dispatch, { username, password });
-  // };
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch, { accountNo, password });
+  };
   return (
     <Container>
-        <LogoContainer>
-          {/* <Logo href = "/">
+      <LogoContainer>
+        {/* <Logo href = "/">
             <Image src={logo} />
           </Logo> */}
-          <Logo href = "/">Xbank</Logo>
-        </LogoContainer>
-        {/* <Logo>
+        <Logo href="/">Xbank</Logo>
+      </LogoContainer>
+      {/* <Logo>
           <Image src = {logo}/>
           tore
         </Logo> */}
-        <Title>Sign In</Title>
-        <Form>
-          <Input
-            placeholder="Username"
-            // onChange={(e) => setUsername(e.target.value)}
-          ></Input>
-          <Input
-            type="password"
-            placeholder="Password"
-            // onChange={(e) => setPassword(e.target.value)}
-          ></Input>
-          <Button>
-            SIGN UP
-          </Button>
-          {/* <Button onClick={handleClick} disabled={isFetching}> 
-            Sign In
-      </Button> */}
-          {/* {error && <Error> Something went wrong... </Error>} */}
-          <TextContainer>
-            Don't have an account?
-            <Link>
-              <b>SIGN UP</b>
-            </Link>
-          </TextContainer>
-        </Form>
+      <Title>Sign In</Title>
+      <Form>
+        <Input
+          placeholder="A/C no"
+          onChange={(e) => setAccountNo(e.target.value)}
+        ></Input>
+        <Input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        ></Input>
+        <Button onClick={handleClick}>Sign In</Button>
+        {/* {error && <Error> Something went wrong... </Error>} */}
+        <TextContainer>
+          Don't have an account?
+          <Link>
+            <b>SIGN UP</b>
+          </Link>
+        </TextContainer>
+      </Form>
     </Container>
   );
 };
