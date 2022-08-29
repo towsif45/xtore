@@ -47,11 +47,11 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TransCard(props) {
+const TransactionCard = (props) => {
   const { transaction } = props;
   const formatted_date = transaction.createdAt.split("T")[0];
   const classes = useStyles();
-  
+
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent className={classes.content}>
@@ -63,7 +63,7 @@ export default function TransCard(props) {
           Date: {formatted_date}
         </Typography>
         <Typography className={classes.pos} variant="h6" component="h2">
-          User ID: {transaction._id}
+          Transaction ID: {transaction._id}
         </Typography>
         {/* {products.map((product) => {
           return (
@@ -75,11 +75,15 @@ export default function TransCard(props) {
         })} */}
       </CardContent>
       <CardContent className={classes.status}>
-        <Box sx={{ marginTop: 10, fontSize: '28px'}}>
-          <Typography color="textSecondary">Paid Amount<br/> </Typography>
+        <Box sx={{ marginTop: 10, fontSize: "28px" }}>
+          <Typography color="textSecondary">
+            Paid Amount
+            <br />{" "}
+          </Typography>
         </Box>
         <Typography>${transaction.amount}</Typography>
       </CardContent>
     </Card>
   );
-}
+};
+export default TransactionCard;

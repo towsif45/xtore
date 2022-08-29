@@ -22,9 +22,7 @@ const OrderHistory = () => {
       <Box sx = {{minWidth:'80%', padding: '50px 0px 0px 0px', flex: 1}}>
         <SimpleCard />
       </Box>
-      <Box sx = {{minWidth:'80%', padding: '0px 0px 0px 0px', flex: 1}}>
-        <SimpleCard/>
-      </Box>
+      
     </Container>
   )
 }

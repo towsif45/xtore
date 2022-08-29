@@ -9,26 +9,22 @@ import { userRequest } from "../requestMethods";
 import { Box, Typography } from "@material-ui/core";
 
 const Transaction = () => {
-  const [orders, setOrders] = useState([]);
+  const [transactions, setTransactions] = useState([]);
   useEffect(() => {
-    const fetchOrders = async () => {
-      const res = await userRequest.get("/orders");
+    const fetchTransactions = async () => {
+      const res = await userRequest.get("/transactions");
       console.log(res.data);
-      setOrders(res.data);
+      setTransactions(res.data);
     };
-    fetchOrders();
-  });
+    fetchTransactions();
+  }, []);
   return <div style={{ flex: 4, padding:"20px", color: "#256D85", textAlign:'center'}}>
     <Typography variant="h5" sx = {{}}>Transaction Records</Typography>
-    {orders.map((order) => {
+    {transactions.map((transaction) => {
         return (
           <Box sx={{ margin: 50 }}>
             <TransCard
-              date={order.createdAt}
-              id={order._id}
-              products={order.products}
-              amount={order.amount}
-              status={order.status}
+              transaction = {transaction}
             />
           </Box>
         );

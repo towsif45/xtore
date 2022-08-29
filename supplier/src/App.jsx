@@ -4,7 +4,7 @@ import Transaction from "./pages/Transaction";
 import Sidebar from "./components/sidebar/Sidebar";
 
 const App = () => {
-  return <Transaction/>;
+  return <AllOrders/>;
 };
 
 export default App;
