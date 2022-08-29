@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import headphone from "../images/headphonerbg.png";
 import { mobile } from "../responsive";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -133,6 +133,7 @@ const SingleProduct = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -155,6 +156,7 @@ const SingleProduct = () => {
   const handleClick = () => {
     // update cart
     dispatch(addProduct({ ...product, quantity }));
+    navigate("/cart")
   };
 
   return (
