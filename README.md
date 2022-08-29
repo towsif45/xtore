@@ -4,11 +4,13 @@ An e-commerce web app, for API project under the course Web Technologies (CSE 44
 
 ## Downloading the project
 
+Open your terminal, navigate to your desired directory and run:
+
 `git clone https://github.com/dr-weirdo/xtore.git`
 
 ## Importing node modules
 
-Open three different terminal instances and navigate to the project directory. In five different terminal instances, run these commands:
+Open five different terminal instances and navigate to the project directory. In five different terminal instances, run these commands:
 
 ### IN TERMINAL 1
 
