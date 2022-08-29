@@ -110,7 +110,7 @@ export default function OrderCard(props) {
           <Button
             variant="outlined"
             color="#256D85">
-            Approve
+            Deliver
           </Button>
         </Box>
         {/* <Typography>{order.status}</Typography> */}

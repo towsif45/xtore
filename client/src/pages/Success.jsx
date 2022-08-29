@@ -9,6 +9,7 @@ import { resetCart } from "../redux/cartRedux";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
+import { Typography } from "@material-ui/core";
 // import { userRequest } from "../requestMethods";
 
 const Container = styled.div`
@@ -111,9 +112,19 @@ const Success = () => {
       <Navbar />
       <TitleText>Your order preview</TitleText>
       {/* <DescText> */}
-      {cart.products.map((product) => {
-        return <DescText> {product.title} </DescText>;
+      {cart.combinedProducts.map((product) => {
+        return (
+          <>
+            <DescText>
+              {" "}
+              {product.title} x{product.quantity}{" "}
+            </DescText>
+          </>
+        );
       })}
+      <Typography variant="h4" style={{ color: "#256d85" }}>
+        Total: $ {cart.total}
+      </Typography>
       {/* </DescText> */}
       {/* <div> */}
       {/* Your order preview: */}
