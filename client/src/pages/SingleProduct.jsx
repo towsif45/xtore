@@ -2,38 +2,43 @@ import styled from "styled-components";
 import { Add, Remove } from "@material-ui/icons";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import headphone from "../images/headphonerbg.png"
+import headphone from "../images/headphonerbg.png";
 import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import {publicRequest} from "../requestMethods"
-import {addProduct} from "../redux/cartRedux"
+import { publicRequest } from "../requestMethods";
+import { addProduct } from "../redux/cartRedux";
 
-const Container = styled.div`
-
-`
+const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({flexDirection:"column", padding:"10px", alignItems:"center"})}
+  // align-items: center;
+  ${mobile({ flexDirection: "column", padding: "10px", alignItems: "center" })}
 `;
 
 const ImgContainer = styled.div`
+  display: flex;
   flex: 1;
+  justify-content: center;
 `;
 
 const Image = styled.img`
+  // justify-content: center;
   width: 400px;
   height: 400px;
-//   object-fit: cover;
-  ${mobile({height:"50vh", width:"50vh"})}
+  //   object-fit: cover;
+  ${mobile({ height: "50vh", width: "50vh" })}
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Title = styled.h1`
@@ -52,32 +57,32 @@ const Price = styled.span`
   font-size: 35px;
 `;
 
-const FilterContainer = styled.div`
-  width: 50%;
-  margin: 30px 0px;
-  display: flex;
-  justify-content: space-between;
-`;
+// const FilterContainer = styled.div`
+//   width: 50%;
+//   margin: 30px 0px;
+//   display: flex;
+//   justify-content: space-between;
+// `;
 
-const Filter = styled.div`
-  display: flex;
-  align-items: center;
-`;
+// const Filter = styled.div`
+//   display: flex;
+//   align-items: center;
+// `;
 
-const FilterTitle = styled.span`
-  font-size: 20px;
-  font-weight: 200;
-  margin-right: 5px;
-`;
+// const FilterTitle = styled.span`
+//   font-size: 20px;
+//   font-weight: 200;
+//   margin-right: 5px;
+// `;
 
-const FilterColor = styled.div`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: ${(props) => props.color};
-  margin: 0px 5px;
-  cursor: pointer;
-`;
+// const FilterColor = styled.div`
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+//   background-color: ${(props) => props.color};
+//   margin: 0px 5px;
+//   cursor: pointer;
+// `;
 
 const AddContainer = styled.div`
   width: 50%;
@@ -100,11 +105,12 @@ const Amount = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0px 5px;
+  margin: 30px 5px;
 `;
 
 const Button = styled.button`
   padding: 15px;
+  width: 20%;
   margin: 20px 0px;
   border: 1px solid #256d85;
   color: #256d85;
@@ -122,9 +128,10 @@ const Button = styled.button`
 const SingleProduct = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
+  const cartProducts = useSelector((state) => state.cart.products);
+  console.log(cartProducts);
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
-  const [color, setColor] = useState("");
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -132,7 +139,7 @@ const SingleProduct = () => {
       try {
         const res = await publicRequest("/products/find/" + id);
         setProduct(res.data);
-        console.log(res.data);
+        //console.log(res.data);
       } catch (err) {}
     };
     getProduct();
@@ -147,7 +154,7 @@ const SingleProduct = () => {
   };
   const handleClick = () => {
     // update cart
-    dispatch(addProduct({ ...product, quantity, color }));
+    dispatch(addProduct({ ...product, quantity }));
   };
 
   return (
@@ -162,14 +169,14 @@ const SingleProduct = () => {
           <Desc>{product.description}</Desc>
           <Price>{"$ " + product.price}</Price>
 
-          <FilterContainer>
+          {/* <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((c) => (
                 <FilterColor color={c} onClick={() => setColor(c)} />
               ))}
             </Filter>
-          </FilterContainer>
+          </FilterContainer> */}
           <AddContainer>
             <AmountContainer>
               <Remove

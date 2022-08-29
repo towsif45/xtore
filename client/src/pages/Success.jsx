@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router";
-import { publicRequest } from "../requestMethods";
+import { publicRequest, userRequest } from "../requestMethods";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { resetCart } from "../redux/cartRedux";
@@ -55,16 +55,23 @@ const Success = () => {
           userId: id,
           from_bank_account: bank.accountNo,
           to_bank_account: "421421421",
-          amount: cart.total+5.0, // $5.0 for delivery charge
+          amount: cart.total + 5.0, // $5.0 for delivery charge
         });
         const updatedAccount = await publicRequest.put("/bank/", {
           accountNo: bank.accountNo,
           amount: cart.total,
           password: password,
         });
-        console.log("Cart is", cart);
+        const newOrder = await userRequest.post("/orders", {
+          userId: id,
+          products: cart.combinedProducts,
+          amount: cart.total,
+          address: "Sylhet",
+        });
+        console.log("Cart is", cart.combinedProducts);
         console.log("res.data", res.data);
         console.log(updatedAccount.data);
+        console.log(newOrder.data);
         dispatch(resetCart());
         navigate("/");
       } else {
