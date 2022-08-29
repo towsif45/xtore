@@ -14,7 +14,7 @@ const AllOrders = () => {
     fetchOrders();
   });
   return (
-    <div style={{ flex: 4 }}>
+    <div style={{ flex: 4, color: "#256D85", textAlign:'center', marginTop: 20}}>
       <Typography variant="h5" color="#256D85">
         All Orders
       </Typography>
