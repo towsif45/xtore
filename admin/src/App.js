@@ -18,9 +18,19 @@ import Transaction from "./pages/Transaction";
 import Order from "./pages/Order";
 
 function App() {
-  const admin = JSON.parse(
-    JSON.parse(localStorage.getItem("persist:root")).user
-  ).currentUser.accessToken;
+  let admin = null;
+  if (localStorage.getItem("persist:root") !== null) {
+    if (JSON.parse(localStorage.getItem("persist:root")).user !== null) {
+      if (
+        JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
+          .currentUser !== null
+      ) {
+        admin = JSON.parse(
+          JSON.parse(localStorage.getItem("persist:root")).user
+        ).currentUser.accessToken;
+      }
+    }
+  }
   return (
     <>
       <Router>
