@@ -7,10 +7,8 @@ import {
   Redirect,
 } from "react-router-dom";
 import UserList from "./pages/userList/UserList";
-import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
-import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
 import AppBody from "./pages/AppBody";
@@ -18,6 +16,7 @@ import Transaction from "./pages/Transaction";
 import Order from "./pages/Order";
 
 function App() {
+
   let admin = null;
   if (localStorage.getItem("persist:root") !== null) {
     if (JSON.parse(localStorage.getItem("persist:root")).user !== null) {
@@ -52,13 +51,6 @@ function App() {
               <Redirect to="/login" />
             )}
           </Route>
-          <Route exact path="/user/:userId">
-            {admin ? (
-              <AppBody component={<User />} />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
           <Route exact path="/newUser">
             {admin ? (
               <AppBody component={<NewUser />} />
@@ -69,13 +61,6 @@ function App() {
           <Route exact path="/products">
             {admin ? (
               <AppBody component={<ProductList />} />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
-          <Route exact path="/product/:productId">
-            {admin ? (
-              <AppBody component={<Product />} />
             ) : (
               <Redirect to="/login" />
             )}

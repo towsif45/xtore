@@ -28,7 +28,7 @@ const Left = styled.div`
 const Logo = styled.div`
   font-family: "Expletus Sans", cursive;
   font-size: 35px;
-  color: #F6E6CB;
+  color: #f0e8a1;
   align-items: center;
   cursor: pointer;
   text-decoration: none;
@@ -45,7 +45,7 @@ const MenuItem = styled.a`
   font-size: 14 px;
   coursor: pointer;
   margin-left: 25px;
-  color: #F6E6CB;
+  color: #f0e8a1;
   cursor: pointer;
   text-decoration: none;
   display: flex;

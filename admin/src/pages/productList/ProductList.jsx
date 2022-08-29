@@ -28,11 +28,11 @@ export default function ProductList() {
       },
     },
     { field: "stock", headerName: "Stock", width: 200 },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 120,
-    },
+    // {
+    //   field: "status",
+    //   headerName: "Status",
+    //   width: 120,
+    // },
     {
       field: "price",
       headerName: "Price",
@@ -45,9 +45,9 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/product/" + params.row.id}>
+            {/* <Link to={"/product/" + params.row.id}>
               <button className="productListEdit">Edit</button>
-            </Link>
+            </Link> */}
             <DeleteOutline
               className="productListDelete"
               onClick={() => handleDelete(params.row.id)}

@@ -7,11 +7,12 @@ import Navbar from "../components/Navbar"
 const Container = styled.div`
     align-items: center;
     justify-content: flex-end;
-    background-color: #F6E6CB;
+    // background-color: #F6E6CB;
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
+    background-color: #f0e8a1;
 `
 
 const OrderHistory = () => {

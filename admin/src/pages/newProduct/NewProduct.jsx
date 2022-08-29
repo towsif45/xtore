@@ -2,7 +2,7 @@ import "./newProduct.css";
 
 export default function NewProduct() {
   return (
-    <div className="newProduct">
+    <div className="newProduct" >
       <h1 className="addProductTitle">New Product</h1>
       <form className="addProductForm">
         <div className="addProductItem">
@@ -25,13 +25,6 @@ export default function NewProduct() {
           <label>Price</label>
           <input type="text" />
         </div>
-        {/* <div className="addProductItem">
-          <label>Active</label>
-          <select name="active" id="active">
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div> */}
         <button className="addProductButton">Create</button>
       </form>
     </div>

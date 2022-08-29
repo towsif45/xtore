@@ -9,9 +9,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f6e6cb;
   flex-direction: column;
   position: relative;
+  background-color: #f0e8a1;
 `;
 const LogoContainer = styled.div`
   align-items: center;
@@ -24,7 +24,7 @@ const LogoContainer = styled.div`
 const Logo = styled.a`
   font-family: "Expletus Sans", cursive;
   font-size: 30px;
-  color: #876445;
+  color: #614124;
   margin-bottom: 20px;
   text-decoration: none;
   cursor: pointer;
@@ -32,8 +32,9 @@ const Logo = styled.a`
 
 const Title = styled.div`
   font-size: 24px;
-  color: #876445;
+  // color: #876445;
   font-weight: 300;
+  color: #614124;
 `;
 
 const Form = styled.form`
@@ -45,7 +46,7 @@ const Input = styled.input`
   width: 100%;
   margin: 20px 10px 0px 0px;
   padding: 10px;
-  border: 0.05px solid #876445;
+  border: 0.05px solid #614124;
 `;
 
 const Button = styled.button`
@@ -54,7 +55,7 @@ const Button = styled.button`
   margin-top: 20px;
   padding: 15px 10px;
   color: white;
-  background-color: #876445;
+  background-color: #614124;
   cursor: pointer;
   font-size: 15px;
   transition: all 0.3s ease;
@@ -69,7 +70,7 @@ const Button = styled.button`
   }
 `;
 const TextContainer = styled.div`
-  color: #876445;
+  color: #614124;
   font-size: 14px;
   curson: pointer;
   margin-top: 20px;

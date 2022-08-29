@@ -28,10 +28,11 @@ const useStyles = makeStyles({
     fontSize: 14,
     marginBottom: 15,
     marginTop: 15,
+    color: '#876445',
   },
   pos: {
     marginBottom: 12,
-    color: '#876445',
+    // color: '#876445',
     fontSize: 14,
   },
   body: {

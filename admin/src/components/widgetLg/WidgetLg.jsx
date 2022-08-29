@@ -21,7 +21,7 @@ export default function WidgetLg() {
         <h3 style={{ flex: 10 }} className="widgetLgTitle">
           Latest orders
         </h3>
-        <button style={{ flex: 1 }}>VIEW ALL </button>
+        <button style={{ flex: 1, cursor: 'pointer' }}>VIEW ALL </button>
       </div>
       <table className="widgetLgTable">
         <tr className="widgetLgTr">
