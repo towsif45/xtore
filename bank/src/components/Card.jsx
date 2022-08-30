@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 // import CardActions from '@material-ui/core/CardActions';
@@ -6,7 +6,10 @@ import CardContent from "@material-ui/core/CardContent";
 // import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { publicRequest } from "../requestMethods";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({
   root: {
@@ -53,7 +56,18 @@ const useStyles = makeStyles({
 export default function SimpleCard() {
   const classes = useStyles();
   const navigate = useNavigate();
+  const userBank = useSelector((state) => state.user.currentUser);
+  const [user, setUser] = useState({});
   //   const bull = <span className={classes.bullet}>•</span>;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await publicRequest.get("/users/find/" + userBank.others.userId);
+      console.log(res.data);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, [userBank.others.userId]);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -68,17 +82,17 @@ export default function SimpleCard() {
           color="textSecondary"
           gutterBottom
         >
-          User Information
+          Bank Account Information
         </Typography>
         <Typography className={classes.pos}>
-          Name: Md. Towsif Hossain
+          Name: {user.display_name}
         </Typography>
-        <Typography className={classes.pos}>Username: Towsif45</Typography>
+        <Typography className={classes.pos}>Username: {user.username}</Typography>
         <Typography className={classes.pos}>
-          Address: Uniliver, Akhalia, Sylhet
+          Bank A/C no.: {userBank.others.accountNo}
         </Typography>
         <Typography className={classes.pos}>
-          Mobile Number: 01301959115
+          Bank Balance ($) :  {userBank.others.balance}
         </Typography>
         <Button
           style={{ marginTop: 20 }}

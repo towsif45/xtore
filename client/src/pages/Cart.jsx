@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import headphone from "../images/headphonerbg.png";
 import { Add, Remove } from "@material-ui/icons";
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";

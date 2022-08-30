@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 // import headphone from "../images/headphonerbg.png";
 // import watch from "../images/smartwatch.png";
-import phone from "../images/phone.png";
 import axios from "axios";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
