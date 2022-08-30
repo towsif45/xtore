@@ -1,21 +1,21 @@
 import Navbar from "../components/Navbar";
-import styled from "styled-components";
+// import styled from "styled-components";
 import { Box } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import TransactionCard from "../components/TransactionCard";
 import { publicRequest } from "../requestMethods";
 import { useSelector } from "react-redux";
 
-const Container = styled.div`
-  align-items: center;
-  justify-content: flex-end;
-  // background-color: #F6E6CB;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  background-color: #f0e8a1;
-`;
+// const Container = styled.div`
+//   align-items: center;
+//   justify-content: flex-end;
+//   // background-color: #F6E6CB;
+//   height: 100vh;
+//   width: 100vw;
+//   display: flex;
+//   flex-direction: column;
+//   background-color: #f0e8a1;
+// `;
 
 const Transactions = () => {
   const id = useSelector((state) => state.user.currentUser.others.userId);
