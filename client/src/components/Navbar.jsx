@@ -122,6 +122,7 @@ const Navbar = () => {
     );
     setCartCombined(c);
   }, [cart.products]);
+  
   const handleSignout = (e) => {
     e.preventDefault();
     dispatch(logout());
