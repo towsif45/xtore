@@ -12,7 +12,7 @@ const AllOrders = () => {
       setOrders(res.data);
     };
     fetchOrders();
-  });
+  }, []);
   return (
     <div style={{ flex: 4, color: "#256D85", textAlign:'center', marginTop: 20}}>
       <Typography variant="h5" color="#256D85">

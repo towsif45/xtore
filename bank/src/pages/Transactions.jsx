@@ -40,7 +40,7 @@ const Transactions = () => {
           marginTop: 20,
         }}
       >
-        <Box sx={{ minWidth: "80%", padding: "50px 0px 0px 0px", flex: 1 }}>
+        <Box sx={{ margin: 60 }}>
           {transactions.map((transaction) => {
             return <TransactionCard transaction={transaction} />;
           })}
