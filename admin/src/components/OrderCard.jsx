@@ -7,7 +7,9 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import { userRequest } from "../requestMethods";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import ApproveOrderDialog from "./ApproveOrderDialog";
 
 const useStyles = makeStyles({
   root: {
@@ -53,22 +55,18 @@ export default function OrderCard(props) {
   const { order } = props;
   const formatted_date = order.createdAt.split("T")[0];
   const classes = useStyles();
+  const user = useSelector((state) => state.user.currentUser);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const bull = <span className={classes.bullet}>•</span>;
 
+  const handleClose = () => {
+    setOpenDialog(false);
+  };
+
   const handleClick = (e) => {
     e.preventDefault();
-    const updateOrderStatus = async () => {
-      try {
-        const res = await userRequest.put("/orders/" + order._id, {
-          status: "Approved",
-        });
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    updateOrderStatus();
+    setOpenDialog(true);
   };
 
   return (
@@ -111,6 +109,12 @@ export default function OrderCard(props) {
             </Button>
           </Box>
         )}
+        <ApproveOrderDialog
+          open={openDialog}
+          onClose={handleClose}
+          order={order}
+          user={user}
+        />
       </CardContent>
     </Card>
   );

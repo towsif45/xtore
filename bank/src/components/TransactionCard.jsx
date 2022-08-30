@@ -54,6 +54,8 @@ const TransactionCard = (props) => {
   const classes = useStyles();
   const user = useSelector((state) => state.user.currentUser);
 
+  
+
   return (
     <Card className={classes.root} variant="outlined">
       <CardContent className={classes.content}>
@@ -75,7 +77,7 @@ const TransactionCard = (props) => {
 
         {transaction.from_bank_account !== user.others.accountNo && (
           <Typography className={classes.body} component="p">
-            Sender Account Number: {transaction.to_bank_account}
+            Sender Account Number: {transaction.from_bank_account}
           </Typography>
         )}
 

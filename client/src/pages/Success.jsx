@@ -79,7 +79,7 @@ const Success = () => {
         const res = await publicRequest.post("/transactions", {
           userId: id,
           from_bank_account: bank.accountNo,
-          to_bank_account: "421421421",
+          to_bank_account: "500500500",
           amount: cart.total + 5.0, // $5.0 for delivery charge
         });
         const updatedAccount = await publicRequest.put("/bank/", {

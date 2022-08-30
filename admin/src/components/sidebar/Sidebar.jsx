@@ -1,7 +1,6 @@
 import "./sidebar.css";
 import {
   LineStyle,
-  PermIdentity,
   Storefront,
   AttachMoney,
   AddBox,
@@ -21,12 +20,12 @@ export default function Sidebar() {
                 Home
               </li>
             </Link>
-            <Link to="/users" className="link">
+            {/* <Link to="/users" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
                 Users
               </li>
-            </Link>
+            </Link> */}
             <Link to="/products" className="link">
               <li className="sidebarListItem">
                 <Storefront className="sidebarIcon" />
