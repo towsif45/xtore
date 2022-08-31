@@ -48,11 +48,40 @@ const useStyles = makeStyles({
 });
 
 export default function TransCard(props) {
-  // const { id, products, amount, status, date } = props;
-  // const formatted_date = date.split("T")[0];
+  const { transaction, bank } = props;
+  const formatted_date = transaction.createdAt.split("T")[0];
   const classes = useStyles();
   
+
   return (
+    // <Card className={classes.root} variant="outlined">
+    //   <CardContent className={classes.content}>
+    //     <Typography
+    //       className={classes.title}
+    //       color="textSecondary"
+    //       gutterBottom
+    //     >
+    //       Date: {formatted_date}
+    //     </Typography>
+    //     <Typography className={classes.pos} variant="h6" component="h2">
+    //       User ID: {transaction._id}
+    //     </Typography>
+    //     {/* {products.map((product) => {
+    //       return (
+    //         <Typography className={classes.body} component="p">
+    //           Username: {product.title}<br/>
+    //           Account Number: {product.quantity}<br/>
+    //         </Typography>
+    //       );
+    //     })} */}
+    //   </CardContent>
+    //   <CardContent className={classes.status}>
+    //     <Box sx={{ marginTop: 10, fontSize: '28px'}}>
+    //       <Typography color="textSecondary">Paid Amount<br/> </Typography>
+    //     </Box>
+    //     <Typography>${transaction.amount}</Typography>
+    //   </CardContent>
+    // </Card>
     <Card className={classes.root} variant="outlined">
       <CardContent className={classes.content}>
         <Typography
@@ -60,17 +89,23 @@ export default function TransCard(props) {
           color="textSecondary"
           gutterBottom
         >
-          Date: 
-          {/* {formatted_date} */}
+          Date: {formatted_date}
         </Typography>
         <Typography className={classes.pos} variant="h6" component="h2">
-          User ID: 
-          {/* {id} */}
+          Transaction ID: {transaction._id}
         </Typography>
-        <Typography className={classes.body} component="p">
-          Username:<br/>
-          Account Number:<br/>
-        </Typography>
+        {transaction.from_bank_account === bank.accountNo && (
+          <Typography className={classes.body} component="p">
+            Reciepent Account Number: {transaction.to_bank_account}
+          </Typography>
+        )}
+
+        {transaction.from_bank_account !== bank.accountNo && (
+          <Typography className={classes.body} component="p">
+            Sender Account Number: {transaction.from_bank_account}
+          </Typography>
+        )}
+
         {/* {products.map((product) => {
           return (
             <Typography className={classes.body} component="p">
@@ -81,10 +116,23 @@ export default function TransCard(props) {
         })} */}
       </CardContent>
       <CardContent className={classes.status}>
-        <Box sx={{ marginTop: 10, fontSize: '28px'}}>
-          <Typography color="textSecondary">Paid Amount<br/> </Typography>
-        </Box>
-        <Typography>$</Typography>
+        {transaction.from_bank_account === bank.accountNo && (
+          <Box sx={{ marginTop: 10, fontSize: "28px" }}>
+            <Typography color="textSecondary">
+              Sent Amount
+              <br />{" "}
+            </Typography>
+          </Box>
+        )}
+        {transaction.from_bank_account !== bank.accountNo && (
+          <Box sx={{ marginTop: 10, fontSize: "28px" }}>
+            <Typography color="textSecondary">
+              Recieved Amount
+              <br />{" "}
+            </Typography>
+          </Box>
+        )}
+        <Typography variant="h4">${transaction.amount}</Typography>
       </CardContent>
     </Card>
   );

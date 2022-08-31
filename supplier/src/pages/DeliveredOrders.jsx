@@ -3,11 +3,11 @@ import OrderCard from "../components/OrderCard";
 import { userRequest } from "../requestMethods";
 import { Box, Typography } from "@material-ui/core";
 
-const AllOrders = () => {
+const DeliveredOrders = () => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     const fetchOrders = async () => {
-      const res = await userRequest.get("/orders/find/status/Approved");
+      const res = await userRequest.get("/orders/find/status/Delivered");
       console.log(res.data);
       setOrders(res.data);
     };
@@ -16,7 +16,7 @@ const AllOrders = () => {
   return (
     <div style={{ flex: 4, color: "#256D85", textAlign:'center', marginTop: 20}}>
       <Typography variant="h5" color="#256D85">
-        Supply Requests
+        Delivered Orders
       </Typography>
       {orders.map((order) => {
         return (
@@ -28,4 +28,4 @@ const AllOrders = () => {
     </div>
   );
 };
-export default AllOrders;
+export default DeliveredOrders;

@@ -4,12 +4,13 @@ const verifyToken = (req, res, next) => {
   const authHeader = req.headers.token;
 
   if (authHeader) {
-    // console.log(authHeader);
+    //console.log(authHeader);
     const token = authHeader.split(" ")[1];
 
     jwt.verify(token, "youknowhowflamescanhypnotize", (err, user) => {
       if (err) res.status(403).json("Token is not valid!");
       req.user = user;
+      console.log(req.params)
       next();
     });
   } else {
@@ -20,7 +21,7 @@ const verifyToken = (req, res, next) => {
 const verifyTokenAndAuthorization = (req, res, next) => {
   verifyToken(req, res, () => {
 
-    console.log("verifyAuth " + req.params);
+    console.log("verifyAuth " + req.params.userId);
     // console.log(req.params)
     //console.log(req.user)
 
