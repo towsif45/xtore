@@ -1,47 +1,51 @@
-// import { useEffect, useState } from "react";
+// const Transaction = () => {
+//   return <div style={{ flex: 4 }}>Transactions</div>;
+// };
+// export default Transaction;
+
+import { useEffect, useState } from "react";
 import TransCard from "../components/TransCard";
-// import { userRequest } from "../requestMethods";
+import { userRequest } from "../requestMethods";
 import { Box, Typography } from "@material-ui/core";
-import Topbar from "../components/topbar/Topbar";
-import Sidebar from "../components/sidebar/Sidebar"
+import { useSelector } from "react-redux";
+
 
 const Transaction = () => {
-  // const [orders, setOrders] = useState([]);
-  // useEffect(() => {
-  //   const fetchOrders = async () => {
-  //     const res = await userRequest.get("/orders");
-  //     console.log(res.data);
-  //     setOrders(res.data);
-  //   };
-  //   fetchOrders();
-  // });
-  return (
-    <div>
-      <Topbar/>
-      <div sx = {{display:'flex'}}>
-      <div style={{ flex: 4, padding:"20px", color: "#256D85", textAlign:'center'}}>
-        <Typography variant="h5" color= "#256D85">
-          Transaction Records
-        </Typography>
-        <Box sx={{ margin: 50 }}>
-          <TransCard />
-        </Box>
-    {/* {orders.map((order) => {
+  const [transactions, setTransactions] = useState([]);
+  const user = useSelector((state) => state.user.currentUser);
+
+  useEffect(() => {
+    const fetchTransactions = async () => {
+      const res = await userRequest.get("/transactions/find");
+      console.log(res.data);
+      setTransactions(res.data);
+    };
+    fetchTransactions();
+  }, []);
+
+  const [bank, setBank] = useState({});
+
+  useEffect(() => {
+    const fetchBankAccount = async () => {
+      const res = await userRequest.get("/bank/find/" + user.others._id);
+      console.log(res.data);
+      setBank(res.data);
+    };
+    fetchBankAccount();
+  }, [user.others._id]);
+
+  return <div style={{ flex: 4, padding:"20px", color: "#256D85", textAlign:'center'}}>
+    <Typography variant="h5" sx = {{}}>Transaction Records</Typography>
+    {transactions.map((transaction) => {
         return (
           <Box sx={{ margin: 50 }}>
             <TransCard
-              date={order.createdAt}
-              id={order._id}
-              products={order.products}
-              amount={order.amount}
-              status={order.status}
+              transaction = {transaction}
+              bank={bank}
             />
           </Box>
         );
-      })} */}
-    </div>;
-    </div>
-  </div>
-  );
+      })}
+  </div>;
 };
 export default Transaction;

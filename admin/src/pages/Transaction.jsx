@@ -1,8 +1,3 @@
-// const Transaction = () => {
-//   return <div style={{ flex: 4 }}>Transactions</div>;
-// };
-// export default Transaction;
-
 import { useEffect, useState } from "react";
 import TransCard from "../components/card/TransCard";
 import { userRequest } from "../requestMethods";

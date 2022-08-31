@@ -3,11 +3,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 // import CardActions from '@material-ui/core/CardActions';
 import CardContent from "@material-ui/core/CardContent";
-// import Button from '@material-ui/core/Button';
 import Typography from "@material-ui/core/Typography";
 import { Box } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-// import { userRequest } from "../requestMethods";
+import { userRequest } from "../requestMethods";
 
 const useStyles = makeStyles({
   root: {
@@ -50,26 +49,27 @@ const useStyles = makeStyles({
 });
 
 export default function OrderCard(props) {
-  // const { order } = props;
-  // const formatted_date = order.createdAt.split("T")[0];
+  const { order } = props;
+  const formatted_date = order.createdAt.split("T")[0];
   const classes = useStyles();
 
-  // const bull = <span className={classes.bullet}>•</span>;
+  const bull = <span className={classes.bullet}>•</span>;
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   const updateOrderStatus = async () => {
-  //     try {
-  //       const res = await userRequest.put("/orders/" + order._id, {
-  //         status: "Approved",
-  //       });
-  //       console.log(res.data);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   updateOrderStatus();
-  // };
+  const handleClick = (e) => {
+    e.preventDefault();
+    const updateOrderStatus = async () => {
+      try {
+        const res = await userRequest.put("/orders/" + order._id, {
+          status: "Delivered",
+        });
+        console.log(res.data);
+        window.location.reload();
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    updateOrderStatus();
+  };
 
   return (
     <Card className={classes.root} variant="outlined">
@@ -80,51 +80,40 @@ export default function OrderCard(props) {
           gutterBottom
         >
           Date: 
-          {/* {formatted_date} */}
+          {formatted_date}
         </Typography>
         <Typography className={classes.pos} variant="h6" component="h2">
           Order ID: 
-          {/* {order._id} */}
+          {order._id}
         </Typography>
-        <Typography className={classes.body} variant="body2" component="p">
-          Product: <br/>
-          Quantity:
-        </Typography>
-        {/* {order.products.map((product) => {
+        {order.products.map((product) => {
           return (
             <Typography className={classes.body} variant="body2" component="p">
               Product: {product.title}
               {bull}Quantity: {product.quantity}
             </Typography>
           );
-        })} */}
+        })}
       </CardContent>
       <CardContent className={classes.status}>
         <Box sx={{ marginTop: 10 }}>
           <Typography color="textSecondary">
-            Total Cost: $ 470
-            {/* {order.amount} */}
+            Total Cost: $ 
+            {order.amount}
           </Typography>
         </Box>
-        <Box sx={{ marginTop: 10 }}>
-          <Button
-            variant="outlined"
-            color="#256D85">
-            Deliver
-          </Button>
-        </Box>
-        {/* <Typography>{order.status}</Typography> */}
-        {/* {order.status === "Pending" && (
+        <Typography variant="h5">{order.status}</Typography>
+        {order.status === "Approved" && (
           <Box sx={{ marginTop: 10 }}>
             <Button
               variant="contained"
               color="textSecondary"
               onClick={handleClick}
             >
-              Approve
+              Deliver
             </Button>
           </Box>
-        )} */}
+        )}
       </CardContent>
     </Card>
   );

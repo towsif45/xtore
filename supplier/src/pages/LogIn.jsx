@@ -1,7 +1,7 @@
-// import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-// import { login } from "../redux/apiCalls";
+import { login } from "../redux/apiCalls";
 
 const Container = styled.div`
   width: 100vw;
@@ -77,19 +77,20 @@ const TextContainer = styled.div`
 const Link = styled.a`
   margin-left: 10px;
 `;
-// const Error = styled.span`
-//   color: red;
-// `;
-const LogIn = () => {
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const dispatch = useDispatch();
-  // const { isFetching, error } = useSelector((state) => state.user);
+const Error = styled.span`
+  color: red;
+`;
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   login(dispatch, { username, password });
-  // };
+const LogIn = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch, { username, password });
+  };
   return (
     <Container>
       <Wrapper>
@@ -100,18 +101,18 @@ const LogIn = () => {
         <Form>
           <Input
             placeholder="Username"
-            // onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           ></Input>
           <Input
             type="password"
             placeholder="Password"
-            // onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           ></Input>
-          <Button>
-          {/* // onClick={handleClick} disabled={isFetching}> */}
+          <Button
+          onClick={handleClick} disabled={isFetching} >
             Sign In
           </Button>
-          {/* {error && <Error> Something went wrong... </Error>} */}
+          {error && <Error> Something went wrong... </Error>}
           <TextContainer>
             Don't have an account?
             <Link>
