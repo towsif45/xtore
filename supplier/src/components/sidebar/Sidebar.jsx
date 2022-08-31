@@ -1,5 +1,5 @@
 import "./sidebar.css";
-import { Storefront, AttachMoney } from "@material-ui/icons";
+import { AllInbox, AttachMoney, CheckCircle } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
 export default function Sidebar() {
@@ -11,13 +11,13 @@ export default function Sidebar() {
           <ul className="sidebarList">
             <Link to="/" className="link">
               <li className="sidebarListItem">
-                <Storefront className="sidebarIcon" />
+                <AllInbox className="sidebarIcon" />
                 Supply Requests
               </li>
             </Link>
             <Link to="/delivered" className="link">
               <li className="sidebarListItem">
-                <AttachMoney className="sidebarIcon" />
+                <CheckCircle className="sidebarIcon" />
                 Delivered Orders
               </li>
             </Link>

@@ -32,14 +32,14 @@ const useStyles = makeStyles({
   },
   pos: {
     marginBottom: 12,
-    color: "#256D85",
+    color: "#876445",
   },
   body: {
     marginTop: 10,
     fontSize: 14,
   },
   status: {
-    color: "#256D85",
+    color: "#876445",
     flex: 1,
     // justifyContent: 'flex-end',
     display: "flex",
