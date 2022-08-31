@@ -38,8 +38,16 @@ const App = () => {
             }
           />
 
-          <Route path="/transactions" element={<AppBody component={<Transaction />} />} />
-
+          <Route
+            path="/transactions"
+            element={
+              user ? (
+                <AppBody component={<Transaction />} />
+              ) : (
+                <Navigate to="/login" />
+              )
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
