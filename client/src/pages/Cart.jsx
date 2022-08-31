@@ -256,9 +256,9 @@ const Cart = () => {
                   </ProductDetail>
                   <PriceDetail>
                     <ProductAmountContainer>
-                      <Add style={{ cursor: "pointer", color: "#444444" }} />
-                      <ProductAmount> {product.quantity} </ProductAmount>
-                      <Remove style={{ cursor: "pointer", color: "#444444" }} />
+                      {/* <Add style={{ cursor: "pointer", color: "#444444" }} /> */}
+                      <ProductAmount> Quantity: {product.quantity} </ProductAmount>
+                      {/* <Remove style={{ cursor: "pointer", color: "#444444" }} /> */}
                     </ProductAmountContainer>
                     <ProductPrice>
                       {" "}
