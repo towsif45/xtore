@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-// import { AccountCircle, Search, ShoppingCartOutlined } from "@material-ui/icons";
-// import { Badge } from "@material-ui/core";
-// import { useSelector } from "react-redux";
-// import { mobile } from "../responsive";
-// import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/userRedux";
 
 const Container = styled.div`
   height: 50px;
@@ -52,16 +49,19 @@ const MenuItem = styled.a`
 `;
 
 const Navbar = () => {
-//   const quantity = useSelector((state) => state.cart.quantity);
-//   console.log(quantity);
+  const dispatch = useDispatch();
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+  };
   return (
     <Container>
       <Wrapper>
         <Left>
-            <Logo>XBank</Logo>
+          <Logo>XBank</Logo>
         </Left>
         <Right>
-          <MenuItem>Sign Out</MenuItem>
+          <MenuItem onClick={handleClick}>Sign Out</MenuItem>
         </Right>
       </Wrapper>
     </Container>
